@@ -13,7 +13,7 @@
         </form>
       </div>
       <div class="col-md-6">
-        <img src="landing-page-assets/img/laptop.png" class="laptop-image" alt="">
+        <img src="/landing-page-assets/img/laptop.png" class="laptop-image" alt="">
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="about-img">
-      <img src="landing-page-assets/img/about-img.png" alt="">
+      <img src="/landing-page-assets/img/about-img.png" alt="">
     </div>
   </div>
 </section>
@@ -119,7 +119,7 @@
       <div class="col-md-4 process">
         <div class="process-step">
           <figure class="process-icon">
-            <img src="landing-page-assets/img/process-icons/1.png" alt="#">
+            <img src="/landing-page-assets/img/process-icons/1.png" alt="#">
           </figure>
           <h4>Create Your Wallet</h4>
           <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -128,7 +128,7 @@
       <div class="col-md-4 process">
         <div class="process-step">
           <figure class="process-icon">
-            <img src="landing-page-assets/img/process-icons/2.png" alt="#">
+            <img src="/landing-page-assets/img/process-icons/2.png" alt="#">
           </figure>
           <h4>Create Your Wallet</h4>
           <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -137,7 +137,7 @@
       <div class="col-md-4 process">
         <div class="process-step">
           <figure class="process-icon">
-            <img src="landing-page-assets/img/process-icons/3.png" alt="#">
+            <img src="/landing-page-assets/img/process-icons/3.png" alt="#">
           </figure>
           <h4>Create Your Wallet</h4>
           <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -199,7 +199,7 @@
     <!-- Team member -->
     <div class="member">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="landing-page-assets/img/member/1.jpg"></div>
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
         <h2>Tom Binegar</h2>
         <span>Business Development</span>
       </div>
@@ -209,7 +209,7 @@
         <a href=""><i class="fa fa-twitter"></i></a>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/member/1.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
         <div class="member-meta">
           <h2>Tom Binegar</h2>
           <span>Marketing Director</span>
@@ -220,7 +220,7 @@
     <!-- Team member -->
     <div class="member">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="landing-page-assets/img/member/2.jpg"></div>
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/2.jpg"></div>
         <h2>Jackson Nash</h2>
         <span>Business Development</span>
       </div>
@@ -230,7 +230,7 @@
         <a href=""><i class="fa fa-twitter"></i></a>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/member/2.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/2.jpg"></div>
         <div class="member-meta">
           <h2>Jackson Nash</h2>
           <span>Marketing Director</span>
@@ -241,7 +241,7 @@
     <!-- Team member -->
     <div class="member">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="landing-page-assets/img/member/3.jpg"></div>
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/3.jpg"></div>
         <h2>Tom Binegar</h2>
         <span>Business Development</span>
       </div>
@@ -251,7 +251,7 @@
         <a href=""><i class="fa fa-twitter"></i></a>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/member/3.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/3.jpg"></div>
         <div class="member-meta">
           <h2>Aaron Ballance</h2>
           <span>Ceo Bitcoin</span>
@@ -262,7 +262,7 @@
     <!-- Team member -->
     <div class="member">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="landing-page-assets/img/member/4.jpg"></div>
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/4.jpg"></div>
         <h2>Melissa Barth</h2>
         <span>Product Manager</span>
       </div>
@@ -272,7 +272,7 @@
         <a href=""><i class="fa fa-twitter"></i></a>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/member/4.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/4.jpg"></div>
         <div class="member-meta">
           <h2>Melissa Barth</h2>
           <span>Product Manager</span>
@@ -283,7 +283,7 @@
     <!-- Team member -->
     <div class="member">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="landing-page-assets/img/member/5.jpg"></div>
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/5.jpg"></div>
         <h2>Katy Abrams</h2>
         <span>Head of Design</span>
       </div>
@@ -293,7 +293,7 @@
         <a href=""><i class="fa fa-twitter"></i></a>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/member/5.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/5.jpg"></div>
         <div class="member-meta">
           <h2>Katy Abrams</h2>
           <span>Head of Design</span>
@@ -311,7 +311,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 push-8">
-        <img src="landing-page-assets/img/quote.png" alt="" class="quote mb-5">
+        <img src="/landing-page-assets/img/quote.png" alt="" class="quote mb-5">
         <div class="review-text-slider owl-carousel">
           <div class="review-text">
             <p>"Bitcoin is exciting because it shows how cheap it can be. Bitcoin is better than currency in that you don’t have to be physically in the same place and, of course, for large transactions, currency can get pretty inconvenient.”</p>
@@ -327,21 +327,21 @@
       <div class="col-lg-4 pr-0 pull-3">
         <div class="review-meta-slider owl-carousel pt-5">
           <div class="author-meta">
-            <div class="author-avatar set-bg" data-setbg="landing-page-assets/img/review/1.jpg"></div>
+            <div class="author-avatar set-bg" data-setbg="/landing-page-assets/img/review/1.jpg"></div>
             <div class="author-name">
               <h4>Aaron Ballance</h4>
               <p>Ceo Bitcoin</p>
             </div>
           </div>
           <div class="author-meta">
-            <div class="author-avatar set-bg" data-setbg="landing-page-assets/img/review/2.jpg"></div>
+            <div class="author-avatar set-bg" data-setbg="/landing-page-assets/img/review/2.jpg"></div>
             <div class="author-name">
               <h4>Jackson Nash</h4>
               <p>Head of Design</p>
             </div>
           </div>
           <div class="author-meta">
-            <div class="author-avatar set-bg" data-setbg="landing-page-assets/img/review/3.jpg"></div>
+            <div class="author-avatar set-bg" data-setbg="/landing-page-assets/img/review/3.jpg"></div>
             <div class="author-name">
               <h4>Katy Abrams</h4>
               <p>Product Manager</p>
@@ -388,7 +388,7 @@
       <div class="col-md-4">
         <div class="blog-item">
           <figure class="blog-thumb">
-            <img src="landing-page-assets/img/blog/1.jpg" alt="">
+            <img src="/landing-page-assets/img/blog/1.jpg" alt="">
           </figure>
           <div class="blog-text">
             <div class="post-date">03 jan 2018</div>
@@ -405,7 +405,7 @@
       <div class="col-md-4">
         <div class="blog-item">
           <figure class="blog-thumb">
-            <img src="landing-page-assets/img/blog/2.jpg" alt="">
+            <img src="/landing-page-assets/img/blog/2.jpg" alt="">
           </figure>
           <div class="blog-text">
             <div class="post-date">28 dec 2018</div>
@@ -422,7 +422,7 @@
       <div class="col-md-4">
         <div class="blog-item">
           <figure class="blog-thumb">
-            <img src="landing-page-assets/img/blog/3.jpg" alt="">
+            <img src="/landing-page-assets/img/blog/3.jpg" alt="">
           </figure>
           <div class="blog-text">
             <div class="post-date">28 aug 2018</div>

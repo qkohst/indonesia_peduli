@@ -17,5 +17,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', function () {
-    return view('landing-page.home');
+    $title = 'Home';
+    return view('landing-page.home', compact('title'));
+});
+
+Route::get('auth/login', 'AuthController@view_login')->name('login');
+Route::post('auth/login', 'AuthController@post_login')->name('login');
+Route::get('auth/register', 'AuthController@view_register')->name('register');
+Route::post('auth/register', 'AuthController@post_register')->name('register');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('auth/logout', 'AuthController@logout')->name('logout');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+    });
 });

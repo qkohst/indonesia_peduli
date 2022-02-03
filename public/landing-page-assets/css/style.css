@@ -973,7 +973,7 @@ ol {
 ======================*/
 
 .page-info-section {
-	height: 300px;
+	height: 200px;
 	background-image: url("../img/page-info-bg.png");
 	background-size: cover;
 	background-color: #f3f7f9;
@@ -982,7 +982,8 @@ ol {
 	position: relative;
 	overflow: hidden;
 	display: block;
-	padding-top: 100px;
+	padding-top: 90px;
+	padding-bottom: 50px;
 }
 
 .page-info-section h2 {
