@@ -30,7 +30,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('auth/logout', 'AuthController@logout')->name('logout');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
+    // Route Member
     Route::group(['prefix' => 'member'], function () {
         Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+    });
+
+    // Route Admin
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
+            'uses' => ['index', 'store', 'destroy']
+        ]);
     });
 });
