@@ -18,10 +18,8 @@ Route::get('/unauthorized', function () {
     return view('errorpages.401', compact('title'));
 });
 
-Route::get('/', function () {
-    $title = 'Home';
-    return view('landing-page.home', compact('title'));
-});
+Route::get('/', 'LandingPageController@index')->name('home');
+Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
 
 Route::get('auth/login', 'AuthController@view_login')->name('login');
 Route::post('auth/login', 'AuthController@post_login')->name('login');

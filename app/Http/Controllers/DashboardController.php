@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProgramDonasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,8 +22,11 @@ class DashboardController extends Controller
             ));
         } else {
             $title = 'Home';
+            $data_program_donasi = ProgramDonasi::all();
+
             return view('landing-page.home', compact(
                 'title',
+                'data_program_donasi'
             ));
         }
     }
