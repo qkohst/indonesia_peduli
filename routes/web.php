@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/unauthorized', function () {
+    $title = 'Unauthorized';
+    return view('errorpages.401', compact('title'));
+});
+
 Route::get('/', function () {
     $title = 'Home';
     return view('landing-page.home', compact('title'));
@@ -30,15 +32,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('auth/logout', 'AuthController@logout')->name('logout');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-    // Route Member
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+    // Route Admin
+    Route::group(['middleware' => 'checkRole:1'], function () {
+        Route::group(['prefix' => 'admin'], function () {
+            Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
+                'uses' => ['index', 'store', 'destroy']
+            ]);
+            Route::resource('program-donasi', 'Admin\ProgramDonasiController');
+        });
     });
 
-    // Route Admin
-    Route::group(['prefix' => 'admin'], function () {
-        Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
-            'uses' => ['index', 'store', 'destroy']
-        ]);
+    // Route Member
+    Route::group(['middleware' => 'checkRole:2'], function () {
+        Route::group(['prefix' => 'member'], function () {
+            Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+        });
     });
 });

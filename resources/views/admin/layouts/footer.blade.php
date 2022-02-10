@@ -22,8 +22,17 @@
         <!-- jQuery custom content scroller -->
         <script src="/admin-assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
+        <!-- Datatables -->
+        <script src="/admin-assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="/admin-assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="/admin-assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="/admin-assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+
         <!-- Custom Theme Scripts -->
         <script src="/admin-assets/build/js/custom.min.js"></script>
+
+        <!-- CK Editor -->
+        <script src="/admin-assets/vendors/ckeditor/ckeditor.js"></script>
         </body>
 
         </html>

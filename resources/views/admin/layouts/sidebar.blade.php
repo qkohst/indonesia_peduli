@@ -27,7 +27,7 @@
         <ul class="nav side-menu">
           <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
           <li><a href="{{ route('kategori-donasi.index') }}"><i class="fa fa-sitemap"></i> Ketegori Donasi</a></li>
-          <li><a href="#"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i> Program Donasi</a></li>
+          <li><a href="{{ route('program-donasi.index') }}"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i> Program Donasi</a></li>
 
           <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">

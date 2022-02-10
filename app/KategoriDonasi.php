@@ -10,4 +10,9 @@ class KategoriDonasi extends Model
     protected $fillable = [
         'nama_kategori'
     ];
+
+    public function program_donasi()
+    {
+        return $this->hasMany('App\ProgramDonasi');
+    }
 }
