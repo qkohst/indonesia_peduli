@@ -44,6 +44,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'checkRole:2'], function () {
         Route::group(['prefix' => 'member'], function () {
             Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+            Route::resource('donasi', 'Member\DonasiController',  [
+                'uses' => ['show', 'store', 'destroy']
+            ]);
         });
     });
 });

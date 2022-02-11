@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <a href="#" class="site-btn btn-block sb-gradients mt-3">Donasi Sekarang</a>
+          <a href="{{ route('donasi.show', $program_donasi->id) }}" class="site-btn btn-block sb-gradients mt-3">Donasi Sekarang</a>
         </div>
       </div>
     </div>
