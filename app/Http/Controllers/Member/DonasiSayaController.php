@@ -3,30 +3,29 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use App\ProgramDonasi;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DonasiController extends Controller
+class DonasiSayaController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function index()
     {
-        $program_donasi = ProgramDonasi::findorfail($id);
-        $title = 'Donasi Untuk ' . $program_donasi->judul;
-        return view('member.donasi.show', compact(
-            'title',
-            'program_donasi'
-        ));
+        //
     }
 
-    // LANJUT KE PROSES BAYAR
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,6 +38,16 @@ class DonasiController extends Controller
         //
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

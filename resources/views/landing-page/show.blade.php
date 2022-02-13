@@ -1,4 +1,16 @@
 @include('layouts.landing-page.header')
+
+<section class="page-info-section">
+  <div class="container">
+    <h2>{{$title}}</h2>
+    <div class="site-beradcamb">
+      <a href="/">Donasi</a>
+      <span><i class="fa fa-angle-right"></i> {{$title}}</span>
+    </div>
+  </div>
+</section>
+<!-- Page info end -->
+
 <!-- Blog section -->
 <section class="single-blog-page spad">
   <div class="container">

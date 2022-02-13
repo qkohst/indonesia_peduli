@@ -28,4 +28,9 @@ class ProgramDonasi extends Model
     {
         return $this->belongsTo('App\KategoriDonasi');
     }
+
+    public function donasi()
+    {
+        return $this->hasMany('App\Donasi');
+    }
 }

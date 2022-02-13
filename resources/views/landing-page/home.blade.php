@@ -32,7 +32,7 @@
         <div class="row">
           <!-- blog item -->
           @foreach($data_program_donasi as $program_donasi)
-          <div class="col-md-4">
+          <div class="col-lg-4 col-md-6">
             <div class="blog-item">
               <figure class="blog-thumb">
                 <img src="/gambar-program-donasi/{{$program_donasi->gambar}}" alt="" height="200px" class="mx-auto d-block">

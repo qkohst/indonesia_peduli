@@ -21,7 +21,7 @@ class LandingPageController extends Controller
     public function show($id)
     {
         $program_donasi = ProgramDonasi::findorfail($id);
-        $title = $program_donasi->judul;
+        $title = 'Detail Program';
         return view('landing-page.show', compact(
             'title',
             'program_donasi',
