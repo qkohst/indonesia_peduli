@@ -29,7 +29,7 @@ class PaymentController extends Controller
 
             // Midtrans
             // Set your Merchant Server Key
-            \Midtrans\Config::$serverKey = 'SB-Mid-server-SAT0FWcK8gpKSTJ82rX8mOlS';
+            \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
             // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
             \Midtrans\Config::$isProduction = false;
             // Set sanitization on (default)
@@ -84,6 +84,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $json = json_decode($request->json);
+        // dd($json);
         $program_donasi = ProgramDonasi::findorfail($request->donasi_id);
         $donasi = new Donasi([
             'user_id' => Auth::user()->id,
@@ -98,6 +99,29 @@ class PaymentController extends Controller
         ]);
         $donasi->save();
 
-        return redirect('/')->with('toast_success', 'Silahkan selesaikan pembayaran');
+        return redirect('/member/donasi-saya')->with('toast_success', 'Silahkan selesaikan pembayaran');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $json = json_decode($request->json);
+        // dd($json);
+        $donasi = Donasi::findorfail($id);
+        $data_donasi = [
+            'transaction_id' => $json->transaction_id,
+            'order_id' => $json->order_id,
+            'gross_amount' => $json->gross_amount,
+            'payment_type' => $json->payment_type,
+            'transaction_status' => $json->transaction_status,
+        ];
+        $donasi->update($data_donasi);
+        return back()->with('toast_success', 'Metode pembayaran berhasil diganti');
     }
 }

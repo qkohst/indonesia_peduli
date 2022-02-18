@@ -44,11 +44,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'checkRole:2'], function () {
         Route::group(['prefix' => 'member'], function () {
             Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+
             Route::resource('donasi', 'Member\DonasiController',  [
                 'uses' => ['show', 'store']
             ]);
-            Route::get('payment', 'Member\PaymentController@index')->name('payment.index');
-            Route::post('payment', 'Member\PaymentController@store')->name('payment.store');
+
+            Route::resource('payment', 'Member\PaymentController',  [
+                'uses' => ['show', 'store', 'update']
+            ]);
+
+            // Route::get('payment', 'Member\PaymentController@index')->name('payment.index');
+            // Route::post('payment', 'Member\PaymentController@store')->name('payment.store');
+
+            Route::resource('donasi-saya', 'Member\DonasiSayaController',  [
+                'uses' => ['index', 'show']
+            ]);
         });
     });
 });

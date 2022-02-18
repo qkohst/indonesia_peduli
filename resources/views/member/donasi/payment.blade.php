@@ -64,19 +64,19 @@
     window.snap.pay('{{$snapToken}}', {
       onSuccess: function(result) {
         /* You may add your own implementation here */
-        alert("payment success!");
+        // alert("payment success!");
         console.log(result);
         send_response_to_form(result);
       },
       onPending: function(result) {
         /* You may add your own implementation here */
-        alert("wating your payment!");
+        // alert("wating your payment!");
         console.log(result);
         send_response_to_form(result);
       },
       onError: function(result) {
         /* You may add your own implementation here */
-        alert("payment failed!");
+        // alert("payment failed!");
         console.log(result);
         send_response_to_form(result);
       },

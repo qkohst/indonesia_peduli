@@ -26,11 +26,11 @@
         <div class="col-lg-7">
           <h4 class="widget-title">{{$program_donasi->judul}}</h4>
           <p>
-            <a><i class="fa fa-users text-primary"></i> 0 donatur</a>
+            <a><i class="fa fa-users text-primary"></i> {{$program_donasi->jumlah_donatur}} donatur</a>
             <a class="float-right"><span>Berakhir : </span> {{$program_donasi->batas_akhir_donasi->format('d M Y')}}</a>
           </p>
           <div class=" progress" style="height: 10px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width: {{$program_donasi->prosentasi_terdanai}}%" aria-valuenow="{{$program_donasi->prosentasi_terdanai}}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="post-meta">
             <a><small>Terdanai</small></a>
@@ -38,10 +38,10 @@
           </div>
           <div class="post-meta">
             <a class="text-primary">
-              <b>{{rupiah($program_donasi->kebutuhan_dana)}}</b>
+              <b>{{rupiah($program_donasi->terdanai)}}</b>
             </a>
             <a class="float-right text-secondary">
-              <b>{{rupiah($program_donasi->kebutuhan_dana)}}</b>
+              <b>{{rupiah($program_donasi->kebutuhan_dana-$program_donasi->terdanai)}}</b>
             </a>
           </div>
 
@@ -70,7 +70,7 @@
                 <a class="nav-link active" data-bs-toggle="tab" id="nav-kisah-tab" href="#nav-kisah">Cerita/Kisah</a>
               </li>
               <li class="nav-item">
-                <a href="#nav-donatur" class="nav-link" data-bs-toggle="tab" id="nav-donatur-tab"> Para Donatur (0)</a>
+                <a href="#nav-donatur" class="nav-link" data-bs-toggle="tab" id="nav-donatur-tab"> Para Donatur ({{$program_donasi->jumlah_donatur}})</a>
               </li>
               <li class="nav-item">
                 <a href="#nav-komentar" class="nav-link" data-bs-toggle="tab" id="nav-komentar-tab"> Komentar (0)</a>
@@ -89,32 +89,21 @@
             </div>
 
             <div class="tab-pane fade" id="nav-donatur" role="tabpanel" aria-labelledby="nav-donatur-tab">
-              <h4>Para Donatur (0)</h4>
+              <h4>Para Donatur ({{$program_donasi->jumlah_donatur}})</h4>
               <ul class="comment-list">
+                @foreach($data_donatur as $donatur)
                 <li>
                   <div class="comment">
-                    <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/1.jpg"></div>
+                    <div class="comment-avator set-bg" data-setbg="/avatar/{{$donatur->user->avatar}}"></div>
                     <div class="comment-content">
-                      <h5>Kelly Richardson<span>, 24 Mar 2018</span></h5>
-                      <h5>Donasi <b>Rp.20.000.00</b></h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ut recusandae cum molestias quia rerum dolor, et autem at perferendis consequuntur totam neque est aut optio iusto quibusdam vitae voluptatem.</p>
+                      <h5>{{$donatur->user->nama_lengkap}}<span>, {{$donatur->created_at}}</span></h5>
+                      <h5>Donasi <b>{{rupiah($donatur->gross_amount)}}</b></h5>
+                      <p>{{$donatur->doa}}</p>
                     </div>
                   </div>
                 </li>
                 <hr>
-
-                <li>
-                  <div class="comment">
-                    <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/1.jpg"></div>
-                    <div class="comment-content">
-                      <h5>Kelly Richardson<span>, 24 Mar 2018</span></h5>
-                      <h5>Donasi <b>Rp.20.000.00</b></h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius a excepturi atque cum voluptates iure aliquid distinctio, aspernatur asperiores ut hic corporis aperiam itaque ipsa nobis voluptatem, temporibus eaque dolore!</p>
-                    </div>
-                  </div>
-                </li>
-                <hr>
-
+                @endforeach
               </ul>
             </div>
 

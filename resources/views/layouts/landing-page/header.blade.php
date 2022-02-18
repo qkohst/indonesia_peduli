@@ -33,7 +33,7 @@
   <header class="header-section clearfix">
     <div class="container">
       <a href="index.html" class="site-logo">
-        <img src="/landing-page-assets/img/logo.png" alt="">
+        <img src="/" alt="">
       </a>
       <div class="responsive-bar"><i class="fa fa-bars"></i></div>
       <a href="" class="site-btn">Donasi Sekarang</a>
@@ -41,7 +41,7 @@
         <ul class="menu-list">
           <li><a href="/">Donasi</a></li>
           <li><a href="">Galang Dana</a></li>
-          <li><a href="">Donasi Saya</a></li>
+          <li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
           <li><a href="">Tentang Kami</a></li>
           <li><a href="">Contact</a></li>
 

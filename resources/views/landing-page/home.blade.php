@@ -42,7 +42,7 @@
                 <h4 class="blog-title"><a href="{{ route('home.show', $program_donasi->id) }}">{{Str::limit($program_donasi->deskripsi, 25, $end='...')}}</a></h4>
 
                 <div class=" progress" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" style="width: {{$program_donasi->prosentasi_terdanai}}%" aria-valuenow="{{$program_donasi->prosentasi_terdanai}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
                 <div class="post-meta">
@@ -50,12 +50,12 @@
                   <a class="float-right"><span>Kekurangan</span></a>
                 </div>
                 <div class="post-meta">
-                  <a>{{rupiah($program_donasi->kebutuhan_dana)}}</a>
-                  <a class="float-right">{{rupiah($program_donasi->kebutuhan_dana)}}</a>
+                  <a>{{rupiah($program_donasi->terdanai)}}</a>
+                  <a class="float-right">{{rupiah($program_donasi->kebutuhan_dana - $program_donasi->terdanai)}}</a>
                 </div>
 
                 <div class="post-meta mt-2">
-                  <a href=""><i class="fa fa-users"></i> 0 donatur</a>
+                  <a href=""><i class="fa fa-users"></i> {{$program_donasi->jumlah_donatur}} donatur</a>
                   <a href=""><i class="fa fa-heart-o"></i> 0 likes</a>
                   <a href=""><i class="fa fa-comments-o"></i> 0 comments</a>
                 </div>
