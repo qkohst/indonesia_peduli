@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Donasi;
 use App\Http\Controllers\Controller;
 use App\KategoriDonasi;
 use App\ProgramDonasi;
@@ -19,7 +20,12 @@ class ProgramDonasiController extends Controller
     public function index()
     {
         $title = 'Program Donasi';
-        $data_program_donasi = ProgramDonasi::all();
+        $data_program_donasi = ProgramDonasi::orderBy('batas_akhir_donasi', 'ASC')->get();
+        foreach ($data_program_donasi as $program_donasi) {
+            $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
+            $program_donasi->terdanai = $donasi->sum('gross_amount');
+        }
+
         return view('admin.program-donasi.index', compact(
             'title',
             'data_program_donasi'
@@ -89,11 +95,14 @@ class ProgramDonasiController extends Controller
      */
     public function show($id)
     {
-        $program_donasi = ProgramDonasi::findorfail($id);
         $title = 'Detail Program Donasi';
+        $program_donasi = ProgramDonasi::findorfail($id);
+        $data_donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->orderBy('id', 'DESC')->get();
+
         return view('admin.program-donasi.show', compact(
             'title',
-            'program_donasi'
+            'program_donasi',
+            'data_donasi'
         ));
     }
 

@@ -12,7 +12,7 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = 'Home';
-        $data_program_donasi = ProgramDonasi::all();
+        $data_program_donasi = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
         foreach ($data_program_donasi as $program_donasi) {
             $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
 
@@ -31,7 +31,7 @@ class LandingPageController extends Controller
     {
         $title = 'Detail Program';
         $program_donasi = ProgramDonasi::findorfail($id);
-        $data_donatur = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
+        $data_donatur = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->orderBy('id', 'DESC')->get();
 
         $program_donasi->terdanai = $data_donatur->sum('gross_amount');
         $program_donasi->jumlah_donatur = $data_donatur->count();

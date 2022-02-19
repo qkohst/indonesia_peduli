@@ -32,7 +32,7 @@
                           <th>No</th>
                           <th>Judul Donasi</th>
                           <th>Jenis Kategori</th>
-                          <th>Deskripsi Singkat</th>
+                          <th>Batas Akhir Donasi</th>
                           <th>Kebutuhan Donasi</th>
                           <th>Donasi Terkumpul</th>
                           <th>Aksi</th>
@@ -47,9 +47,9 @@
                           <td>{{$no}}</td>
                           <td>{{$program_donasi->judul}}</td>
                           <td>{{$program_donasi->kategori_donasi->nama_kategori}}</td>
-                          <td>{{$program_donasi->deskripsi}}</td>
+                          <td>{{$program_donasi->batas_akhir_donasi->format('d M Y')}}</td>
                           <td>{{rupiah($program_donasi->kebutuhan_dana)}}</td>
-                          <td>Rp.xxxx</td>
+                          <td>{{rupiah($program_donasi->terdanai)}}</td>
                           <td>
                             <form action="{{ route('program-donasi.destroy', $program_donasi->id) }}" method="POST">
                               @csrf

@@ -38,7 +38,7 @@
                 <img src="/gambar-program-donasi/{{$program_donasi->gambar}}" alt="" height="200px" class="mx-auto d-block">
               </figure>
               <div class="blog-text">
-                <div class="post-date">Berakhir Pada : {{$program_donasi->batas_akhir_donasi->format('d M Y')}}</div>
+                <div class="post-date">Berakhir {{$program_donasi->batas_akhir_donasi->diffForHumans()}}</div>
                 <h4 class="blog-title"><a href="{{ route('home.show', $program_donasi->id) }}">{{Str::limit($program_donasi->deskripsi, 25, $end='...')}}</a></h4>
 
                 <div class=" progress" style="height: 5px;">

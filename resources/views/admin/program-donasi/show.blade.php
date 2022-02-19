@@ -52,7 +52,7 @@
                     <button type="button" class="btn btn-default btn-xs">{{$program_donasi->batas_akhir_donasi->diffForhumans()}}</button>
                   </li>
                   <li>
-                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-users"></i> 0 donatur</button>
+                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-users"></i> {{$data_donasi->count()}} donatur</button>
                   </li>
                 </ul>
               </div>
@@ -60,7 +60,7 @@
               <div class="">
                 <h2>Dana Terkumpul</h2>
                 <div class="product_price">
-                  <h1 class="price">{{rupiah($program_donasi->kebutuhan_dana)}}</h1>
+                  <h1 class="price">{{rupiah($data_donasi->sum('gross_amount'))}}</h1>
                   <span class="price-tax">Kebutuhan Dana: {{rupiah($program_donasi->kebutuhan_dana)}}</span>
                   <br>
                 </div>
@@ -77,92 +77,42 @@
 
               <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Kisah</a>
+                  <a class="nav-link active" id="kisah-tab" data-toggle="tab" href="#kisah" role="tab" aria-controls="kisah" aria-selected="true">Kisah</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Para Donatur</a>
+                  <a class="nav-link" id="donatur-tab" data-toggle="tab" href="#donatur" role="tab" aria-controls="donatur" aria-selected="false">Para Donatur</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                  <a class="nav-link" id="komentar-tab" data-toggle="tab" href="#komentar" role="tab" aria-controls="komentar" aria-selected="false">Komentar</a>
                 </li>
               </ul>
               <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="kisah" role="tabpanel" aria-labelledby="kisah-tab">
                   {!!$program_donasi->kisah!!}
                 </div>
 
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="donatur" role="tabpanel" aria-labelledby="donatur-tab">
                   <!-- start recent activity -->
                   <ul class="messages">
+                    @foreach($data_donasi as $donasi)
                     <li>
-                      <img src="/admin-assets/images/img.jpg" class="avatar" alt="Avatar">
+                      <img src="/avatar/{{$donasi->user->avatar}}" class="avatar" alt="Avatar">
                       <div class="message_date">
-                        <h3 class="date text-info">24</h3>
-                        <p class="month">May</p>
+                        <h3 class="date text-info">{{$donasi->updated_at->format('d')}}</h3>
+                        <p class="month">{{$donasi->updated_at->format('M Y')}}</p>
                       </div>
                       <div class="message_wrapper">
-                        <h4 class="heading">Desmond Davison</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
+                        <h4 class="heading">{{$donasi->user->nama_lengkap}}</h4>
+                        <blockquote class="message"><b>{{rupiah($donasi->gross_amount)}}</b></blockquote>
                         <br />
-                        <p class="url">
-                          <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                          <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                        </p>
+                        <p class="mr-4">{{$donasi->doa}}</p>
                       </div>
                     </li>
-                    <li>
-                      <img src="/admin-assets/images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-error">21</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Brian Michaels</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1" aria-hidden="true" data-icon=""></span>
-                          <a href="#" data-original-title="">Download</a>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="/admin-assets/images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-info">24</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Desmond Davison</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                          <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="/admin-assets/images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-error">21</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Brian Michaels</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1" aria-hidden="true" data-icon=""></span>
-                          <a href="#" data-original-title="">Download</a>
-                        </p>
-                      </div>
-                    </li>
-
+                    @endforeach
                   </ul>
                   <!-- end recent activity -->
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade" id="komentar" role="tabpanel" aria-labelledby="komentar-tab">
                   xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
                   booth letterpress, commodo enim craft beer mlkshk
                 </div>
