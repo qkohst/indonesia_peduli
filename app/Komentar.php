@@ -22,4 +22,9 @@ class Komentar extends Model
     {
         return $this->belongsTo('App\ProgramDonasi');
     }
+
+    public function balas_komentar()
+    {
+        return $this->hasMany('App\BalasKomentar');
+    }
 }

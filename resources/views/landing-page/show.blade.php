@@ -169,36 +169,38 @@
                       <p>{{$komentar->komentar}}</p>
                       <h5 class="mb-0">
                         <span>0 Like</span>
-                        <span>0 Replay</span>
+                        <span>{{$komentar->data_balas_komentar->count()}} Replay</span>
                       </h5>
                       <button class="btn c-btn mt-2">Like</button>
                       <button class="btn c-btn mt-2" id="btnReplay{{$komentar->id}}" onclick="showHideForm({{$komentar->id}})">Reply</button>
 
-                      <form id="formReplay{{$komentar->id}}" class="comment-form mt-2 form-replay" style="display:none;" action="{{ route('komentar.store') }}" method="POST">
+                      <form id="formReplay{{$komentar->id}}" class="comment-form mt-2 form-replay" style="display:none;" action="{{ route('balas-komentar.store') }}" method="POST">
                         @csrf
                         <div class="form-group clearfix">
-                          <input type="hidden" name="program_donasi_id" value="{{$program_donasi->id}}">
+                          <input type="hidden" name="komentar_id" value="{{$komentar->id}}">
                           <textarea placeholder="Balas komentar" name="komentar" required></textarea>
                           <label></label>
                         </div>
                         <button class="site-btn bg-white no-radius mt-1 mr-2" id="btnCancel{{$komentar->id}}" onclick="hideForm({{$komentar->id}})">Batal</button>
-                        <button class="site-btn sb-gradients no-radius mt-1">Kirim</button>
+                        <button type="submit" class="site-btn sb-gradients no-radius mt-1">Kirim</button>
                       </form>
                       <hr>
                     </div>
                   </div>
 
                   <ul class="replay-comment-list list-replay" style="display:none;" id="replayComment{{$komentar->id}}">
+                    @foreach($komentar->data_balas_komentar as $balas_komentar)
                     <li>
                       <div class="comment">
-                        <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/2.jpg"></div>
+                        <div class="comment-avator set-bg" data-setbg="/avatar/{{$balas_komentar->user->avatar}}"></div>
                         <div class="comment-content">
-                          <h5>Gordon Browns<span>, 24 Mar 2018</span></h5>
-                          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+                          <h5>{{$balas_komentar->user->nama_lengkap}}<span>, {{$balas_komentar->created_at->diffForhumans()}}</span></h5>
+                          <p>{{$balas_komentar->komentar_balas}}</p>
                           <a href="" class="c-btn">Like</a>
                         </div>
                       </div>
                     </li>
+                    @endforeach
                   </ul>
                 </li>
                 @endforeach

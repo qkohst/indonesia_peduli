@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BalasKomentar;
 use App\Donasi;
 use App\KategoriDonasi;
 use App\Komentar;
@@ -39,7 +40,11 @@ class LandingPageController extends Controller
         $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
 
         $data_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->limit(3)->get();
+        foreach ($data_komentar as $komentar) {
+            $komentar->data_balas_komentar = BalasKomentar::where('komentar_id', $komentar->id)->orderBy('created_at', 'DESC')->get();
+        }
         $data_komentar->count = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->count();
+
         return view('landing-page.show', compact(
             'title',
             'program_donasi',
