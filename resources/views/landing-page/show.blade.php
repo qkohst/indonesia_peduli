@@ -136,30 +136,6 @@
             <div class="tab-pane fade" id="nav-komentar" role="tabpanel" aria-labelledby="nav-komentar-tab">
               <h4>{{$data_komentar->count}} Komentar</h4>
               <ul class="comment-list">
-                <!-- <li>
-                  <div class="comment">
-                    <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/1.jpg"></div>
-                    <div class="comment-content">
-                      <h5>Kelly Richardson<span>, 24 Mar 2018</span></h5>
-                      <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                      <a href="" class="c-btn">Like</a>
-                      <a href="" class="c-btn">Reply</a>
-                    </div>
-                  </div>
-                  <ul class="replay-comment-list">
-                    <li>
-                      <div class="comment">
-                        <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/2.jpg"></div>
-                        <div class="comment-content">
-                          <h5>Gordon Browns<span>, 24 Mar 2018</span></h5>
-                          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
-                          <a href="" class="c-btn">Like</a>
-                          <a href="" class="c-btn">Reply</a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </li> -->
                 @foreach($data_komentar as $komentar)
                 <li>
                   <div class="comment">
@@ -206,7 +182,7 @@
                 @endforeach
 
                 @if($data_komentar->count != $data_komentar->count())
-                <button class="post-loadmore site-btn sb-gradients sbg-line mb-5">LIHAT SEMUA KOMENTAR</button>
+                <a href="{{ route('komentar.show', $program_donasi->id) }}" class="post-loadmore site-btn sb-gradients sbg-line mb-5">LIHAT SEMUA KOMENTAR</a>
                 @endif
               </ul>
 

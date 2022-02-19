@@ -57,7 +57,7 @@
                 <div class="post-meta mt-2">
                   <a href=""><i class="fa fa-users"></i> {{$program_donasi->jumlah_donatur}} donatur</a>
                   <a href=""><i class="fa fa-heart-o"></i> 0 likes</a>
-                  <a href=""><i class="fa fa-comments-o"></i> 0 comments</a>
+                  <a href="{{ route('komentar.show', $program_donasi->id) }}"><i class="fa fa-comments-o"></i> {{$program_donasi->jumlah_komentar}} comments</a>
                 </div>
               </div>
             </div>

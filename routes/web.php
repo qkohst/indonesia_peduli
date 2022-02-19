@@ -21,6 +21,8 @@ Route::get('/unauthorized', function () {
 Route::get('/', 'LandingPageController@index')->name('home');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
 
+Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
+
 Route::get('auth/login', 'AuthController@view_login')->name('login');
 Route::post('auth/login', 'AuthController@post_login')->name('login');
 Route::get('auth/register', 'AuthController@view_register')->name('register');
@@ -58,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
             ]);
 
             Route::post('komentar', 'Member\KomentarController@store')->name('komentar.store');
+
             Route::post('balas-komentar', 'Member\BalasKomentarController@store')->name('balas-komentar.store');
         });
     });

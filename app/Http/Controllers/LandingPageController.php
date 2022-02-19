@@ -21,6 +21,7 @@ class LandingPageController extends Controller
             $program_donasi->terdanai = $donasi->sum('gross_amount');
             $program_donasi->jumlah_donatur = $donasi->count();
             $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
+            $program_donasi->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->count();
         }
 
         return view('landing-page.home', compact(
