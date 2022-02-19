@@ -50,6 +50,7 @@
             <h3 class="widget-title">Metode Pembayaran</h3>
 
             <!-- Indomaret -->
+            @if($donasi->payment_type == 'cstore')
             <h3>
               <p class="mb-0">Jenis Pembayaran</p>
             </h3>
@@ -72,6 +73,90 @@
             </h3>
             <h5 class="mt-0">{{$status_transaksi['payment_code']}}</h5>
             <!-- End Indomaret -->
+
+            @elseif($donasi->payment_type == 'bank_transfer' && isset($status_transaksi['permata_va_number']) )
+            <h3>
+              <p class="mb-0">Jenis Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">Permata Virtual Account</h5>
+
+            <h3>
+              <p class="mb-0">Status Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['transaction_status']}}</h5>
+
+            @if($status_transaksi['transaction_status'] == 'settlement')
+            <h3>
+              <p class="mb-0">Waktu Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$donasi->updated_at}}</h5>
+            @endif
+
+            <h3 class="mt-2">
+              <p class="mb-0">Virtual Account </p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['permata_va_number']}}</h5>
+
+            @elseif($donasi->payment_type == 'bank_transfer' && isset($status_transaksi['va_numbers']))
+            <!-- Bank Transfer BNI, BRI, BCA -->
+            <h3>
+              <p class="mb-0">Jenis Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['va_numbers'][0]['bank']}} Virtual Account</h5>
+
+            <h3>
+              <p class="mb-0">Status Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['transaction_status']}}</h5>
+
+
+            @if($status_transaksi['transaction_status'] == 'settlement')
+            <h3>
+              <p class="mb-0">Waktu Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$donasi->updated_at}}</h5>
+            @endif
+
+            <h3 class="mt-2">
+              <p class="mb-0">Virtual Account </p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['va_numbers'][0]['va_number']}}</h5>
+
+            <!-- End Bank Transfer BNI, BRI, BCA -->
+
+            @elseif($donasi->payment_type == 'echannel')
+            <!-- Bank Mandiri  -->
+            <h3>
+              <p class="mb-0">Jenis Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">Mandiri Bill Payment</h5>
+
+            <h3>
+              <p class="mb-0">Status Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['transaction_status']}}</h5>
+
+
+            @if($status_transaksi['transaction_status'] == 'settlement')
+            <h3>
+              <p class="mb-0">Waktu Pembayaran</p>
+            </h3>
+            <h5 class="mt-0">{{$donasi->updated_at}}</h5>
+            @endif
+
+            <h3 class="mt-2">
+              <p class="mb-0">Biller Code </p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['biller_code']}}</h5>
+            <h3 class="mt-2">
+              <p class="mb-0">Bill Key </p>
+            </h3>
+            <h5 class="mt-0">{{$status_transaksi['bill_key']}}</h5>
+
+            <!-- End Bank Mandiri  -->
+
+            <!-- Permata VA -->
+            @endif
           </div>
 
           @if($status_transaksi['transaction_status'] != 'settlement')
