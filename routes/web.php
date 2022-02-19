@@ -53,12 +53,11 @@ Route::group(['middleware' => ['auth']], function () {
                 'uses' => ['show', 'store', 'update']
             ]);
 
-            // Route::get('payment', 'Member\PaymentController@index')->name('payment.index');
-            // Route::post('payment', 'Member\PaymentController@store')->name('payment.store');
-
             Route::resource('donasi-saya', 'Member\DonasiSayaController',  [
                 'uses' => ['index', 'show']
             ]);
+
+            Route::post('komentar', 'Member\KomentarController@store')->name('komentar.store');
         });
     });
 });

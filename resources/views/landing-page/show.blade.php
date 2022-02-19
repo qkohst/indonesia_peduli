@@ -50,7 +50,33 @@
               <a href="#" class="site-btn btn-block sb-line mt-2"><i class="fa fa-heart-o"></i> Likes</a>
             </div>
             <div class="col-lg-6">
-              <a href="#" class="site-btn btn-block sbg-line mt-2"><i class="fa fa-share"></i> Share</a>
+              <button type="button" class="site-btn btn-block sbg-line mt-2 bg-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-share"></i> Share
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Bagikan Lewat</h5>
+                    </div>
+                    <div class="modal-body">
+                      <div class="social">
+                        <a href="" class="bg-success"><i class="fa fa-whatsapp"></i></a>
+                        <a href="" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="http://www.facebook.com/sharer.php?u=https://dumetschool.com" target="_black" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/share?url=https://dumetschool.com&text=Simple%20Share%20Buttons&hashtags=simplesharebuttons" target="_black" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://plus.google.com/share?url=https://dumetschool.com" target="_black" class="google"><i class="fa fa-google-plus"></i></a>
+                        <a href="" class="bg-secondary"><i class="fa fa-link"></i></a>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="site-btn sbg-line" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -73,7 +99,7 @@
                 <a href="#nav-donatur" class="nav-link" data-bs-toggle="tab" id="nav-donatur-tab"> Para Donatur ({{$program_donasi->jumlah_donatur}})</a>
               </li>
               <li class="nav-item">
-                <a href="#nav-komentar" class="nav-link" data-bs-toggle="tab" id="nav-komentar-tab"> Komentar (0)</a>
+                <a href="#nav-komentar" class="nav-link" data-bs-toggle="tab" id="nav-komentar-tab"> Komentar ({{$data_komentar->count}})</a>
               </li>
               <li class="nav-item">
                 <a href="#nav-penyaluran" class="nav-link" data-bs-toggle="tab" id="nav-penyaluran-tab"> Penyaluran Dana</a>
@@ -108,9 +134,9 @@
             </div>
 
             <div class="tab-pane fade" id="nav-komentar" role="tabpanel" aria-labelledby="nav-komentar-tab">
-              <h4>0 Komentar</h4>
+              <h4>{{$data_komentar->count}} Komentar</h4>
               <ul class="comment-list">
-                <li>
+                <!-- <li>
                   <div class="comment">
                     <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/1.jpg"></div>
                     <div class="comment-content">
@@ -133,38 +159,63 @@
                       </div>
                     </li>
                   </ul>
-                </li>
+                </li> -->
+                @foreach($data_komentar as $komentar)
                 <li>
                   <div class="comment">
-                    <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/3.jpg"></div>
+                    <div class="comment-avator set-bg" data-setbg="/avatar/{{$komentar->user->avatar}}"></div>
                     <div class="comment-content">
-                      <h5>Scott Langton<span>, 24 Mar 2018</span></h5>
-                      <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                      <a href="" class="c-btn">Like</a>
-                      <a href="" class="c-btn">Reply</a>
+                      <h5>{{$komentar->user->nama_lengkap}}<span>, {{$komentar->created_at->diffForhumans()}}</span></h5>
+                      <p>{{$komentar->komentar}}</p>
+                      <h5 class="mb-0">
+                        <span>0 Like</span>
+                        <span>0 Replay</span>
+                      </h5>
+                      <button class="btn c-btn mt-2">Like</button>
+                      <button class="btn c-btn mt-2" id="btnReplay{{$komentar->id}}" onclick="showHideForm({{$komentar->id}})">Reply</button>
+
+                      <form id="formReplay{{$komentar->id}}" class="comment-form mt-2 form-replay" style="display:none;" action="{{ route('komentar.store') }}" method="POST">
+                        @csrf
+                        <div class="form-group clearfix">
+                          <input type="hidden" name="program_donasi_id" value="{{$program_donasi->id}}">
+                          <textarea placeholder="Balas komentar" name="komentar" required></textarea>
+                          <label></label>
+                        </div>
+                        <button class="site-btn bg-white no-radius mt-1 mr-2" id="btnCancel{{$komentar->id}}" onclick="hideForm({{$komentar->id}})">Batal</button>
+                        <button class="site-btn sb-gradients no-radius mt-1">Kirim</button>
+                      </form>
+                      <hr>
                     </div>
                   </div>
+
+                  <ul class="replay-comment-list list-replay" style="display:none;" id="replayComment{{$komentar->id}}">
+                    <li>
+                      <div class="comment">
+                        <div class="comment-avator set-bg" data-setbg="/landing-page-assets/img/blog/comment/2.jpg"></div>
+                        <div class="comment-content">
+                          <h5>Gordon Browns<span>, 24 Mar 2018</span></h5>
+                          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+                          <a href="" class="c-btn">Like</a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </li>
+                @endforeach
+
+                @if($data_komentar->count != $data_komentar->count())
+                <button class="post-loadmore site-btn sb-gradients sbg-line mb-5">LIHAT SEMUA KOMENTAR</button>
+                @endif
               </ul>
 
-              <form class="comment-form">
-                <div class="form-group">
-                  <input type="text" placeholder="Your name *:">
-                  <label></label>
-                </div>
-                <div class="form-group">
-                  <input type="email" placeholder="Your email *:">
-                  <label></label>
-                </div>
-                <div class="form-group">
-                  <input type="text" placeholder="Your Phone *:">
-                  <label></label>
-                </div>
+              <form class="comment-form" action="{{ route('komentar.store') }}" method="POST">
+                @csrf
                 <div class="form-group clearfix">
-                  <textarea placeholder="Your comment"></textarea>
+                  <input type="hidden" name="program_donasi_id" value="{{$program_donasi->id}}">
+                  <textarea placeholder="Tulis komentar" name="komentar" required></textarea>
                   <label></label>
                 </div>
-                <button class="site-btn sb-gradients no-radius mt-3">Submit Now</button>
+                <button class="site-btn sb-gradients no-radius mt-3">Kirim</button>
               </form>
             </div>
 
@@ -238,4 +289,22 @@
 </section>
 <!-- Blog section end -->
 
+<script>
+  function showHideForm(id) {
+    const formReplay = document.getElementById("formReplay" + id);
+    const replayComment = document.getElementById("replayComment" + id);
+    if (formReplay.style.display == "block") {
+      formReplay.style.display = "none";
+      replayComment.style.display = "none";
+    } else {
+      formReplay.style.display = "block";
+      replayComment.style.display = "block";
+    }
+  }
+
+  function hideForm(id) {
+    document.getElementById("formReplay" + id).style.display = "none";
+    document.getElementById("replayComment" + id).style.display = "none";
+  }
+</script>
 @include('layouts.landing-page.footer')

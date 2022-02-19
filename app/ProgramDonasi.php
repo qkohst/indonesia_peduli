@@ -33,4 +33,9 @@ class ProgramDonasi extends Model
     {
         return $this->hasMany('App\Donasi');
     }
+
+    public function komentar()
+    {
+        return $this->hasMany('App\Komentar');
+    }
 }
