@@ -27,4 +27,9 @@ class Komentar extends Model
     {
         return $this->hasMany('App\BalasKomentar');
     }
+
+    public function like_komentar()
+    {
+        return $this->hasMany('App\LikeKomentar');
+    }
 }

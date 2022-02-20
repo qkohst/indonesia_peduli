@@ -6,6 +6,7 @@ use App\BalasKomentar;
 use App\Donasi;
 use App\KategoriDonasi;
 use App\Komentar;
+use App\LikeKomentar;
 use App\LikeProgramDonasi;
 use App\ProgramDonasi;
 use Illuminate\Http\Request;
@@ -25,7 +26,12 @@ class LandingPageController extends Controller
             $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
             $program_donasi->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->count();
             $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
-            $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+
+            if (Auth::user()) {
+                $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+            } else {
+                $program_donasi->is_liked = null;
+            }
         }
 
         return view('landing-page.home', compact(
@@ -44,10 +50,21 @@ class LandingPageController extends Controller
         $program_donasi->jumlah_donatur = $data_donatur->count();
         $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
         $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
-        $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+        if (Auth::user()) {
+            $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+        } else {
+            $program_donasi->is_liked = null;
+        }
 
         $data_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->limit(3)->get();
         foreach ($data_komentar as $komentar) {
+            $komentar->jumlah_like = LikeKomentar::where('komentar_id', $komentar->id)->count();
+            if (Auth::user()) {
+                $komentar->is_liked = LikeKomentar::where('komentar_id', $komentar->id)->where('user_id', Auth::user()->id)->first();
+            } else {
+                $komentar->is_liked = null;
+            }
+
             $komentar->data_balas_komentar = BalasKomentar::where('komentar_id', $komentar->id)->orderBy('created_at', 'DESC')->get();
         }
         $data_komentar->count = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->count();

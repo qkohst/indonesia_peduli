@@ -119,11 +119,19 @@
                   <h5>{{$komentar->user->nama_lengkap}}<span>, {{$komentar->created_at->diffForhumans()}}</span></h5>
                   <p>{{$komentar->komentar}}</p>
                   <h5 class="mb-0">
-                    <span>0 Like</span>
-                    <span>{{$komentar->data_balas_komentar->count()}} Replay</span>
+                    @if(is_null($komentar->is_liked))
+                    <span id="like-komentar-count{{$komentar->id}}"><i class="fa fa-heart-o"></i> <b>{{$komentar->jumlah_like}} orang</b> menyukai ini</span>
+                    <span class="d-none" id="your-like-komentar-count{{$komentar->id}}"><i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$komentar->jumlah_like}} orang</b> menyukai ini</span>
+                    @else
+                    <span class="d-none" id="like-komentar-count{{$komentar->id}}"><i class="fa fa-heart-o"></i> <b>{{$komentar->jumlah_like-1}} orang</b> menyukai ini</span>
+                    <span id="your-like-komentar-count{{$komentar->id}}"><i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$komentar->jumlah_like-1}} orang</b> menyukai ini</span>
+                    @endif
+                    <span><i class="fa fa-comments-o"></i> <b>{{$komentar->data_balas_komentar->count()}}</b> Replay</span>
                   </h5>
-                  <button class="btn c-btn mt-2">Like</button>
-                  <button class="btn c-btn mt-2" id="btnReplay{{$komentar->id}}" onclick="showHideForm({{$komentar->id}})">Reply</button>
+
+                  <button class="c-btn mt-2" id="like-komentar-button{{$komentar->id}}" onclick="likeUnlikeKomentar({{$komentar->id}})">Likes</button>
+
+                  <button class="c-btn mt-2" id="btnReplay{{$komentar->id}}" onclick="showHideForm({{$komentar->id}})">Reply</button>
 
                   <form id="formReplay{{$komentar->id}}" class="comment-form mt-2 form-replay" style="display:none;" action="{{ route('balas-komentar.store') }}" method="POST">
                     @csrf
@@ -191,6 +199,50 @@
   function hideForm(id) {
     document.getElementById("formReplay" + id).style.display = "none";
     document.getElementById("replayComment" + id).style.display = "none";
+  }
+
+
+  function likeUnlikeKomentar(id) {
+    let likeKomentarButton = document.getElementById('like-komentar-button' + id);
+    let likeKomentarCount = document.getElementById('like-komentar-count' + id);
+    let yourLikeKomentarCount = document.getElementById('your-like-komentar-count' + id);
+
+    if (yourLikeKomentarCount.classList.contains('d-none')) {
+      console.log('Like Komentar');
+      yourLikeKomentarCount.classList.remove('d-none');
+      likeKomentarCount.classList.add('d-none');
+      likeKomentarButton.innerHTML = "Unlikes";
+
+      $.ajax({
+        url: "/member/like-komentar",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id: id,
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+    } else {
+      console.log('UnLike Komentar');
+      likeKomentarCount.classList.remove('d-none');
+      yourLikeKomentarCount.classList.add('d-none');
+      likeKomentarButton.innerHTML = "Likes";
+
+      $.ajax({
+        url: "/member/like-komentar/" + id,
+        type: "DELETE",
+        dataType: 'json',
+        data: {
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+    }
   }
 </script>
 
