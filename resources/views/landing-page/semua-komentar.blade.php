@@ -129,7 +129,11 @@
                     <span><i class="fa fa-comments-o"></i> <b>{{$komentar->data_balas_komentar->count()}}</b> Replay</span>
                   </h5>
 
+                  @if(is_null($komentar->is_liked))
                   <button class="c-btn mt-2" id="like-komentar-button{{$komentar->id}}" onclick="likeUnlikeKomentar({{$komentar->id}})">Likes</button>
+                  @else
+                  <button class="c-btn mt-2" id="like-komentar-button{{$komentar->id}}" onclick="likeUnlikeKomentar({{$komentar->id}})">Unlikes</button>
+                  @endif
 
                   <button class="c-btn mt-2" id="btnReplay{{$komentar->id}}" onclick="showHideForm({{$komentar->id}})">Reply</button>
 
@@ -155,7 +159,21 @@
                     <div class="comment-content">
                       <h5>{{$balas_komentar->user->nama_lengkap}}<span>, {{$balas_komentar->created_at->diffForhumans()}}</span></h5>
                       <p>{{$balas_komentar->komentar_balas}}</p>
-                      <a href="" class="c-btn">Like</a>
+                      <h5 class="mb-0">
+                        @if(is_null($balas_komentar->is_liked))
+                        <span id="like-balas-komentar-count{{$balas_komentar->id}}"><i class="fa fa-heart-o"></i> <b>{{$balas_komentar->jumlah_like}} orang</b> menyukai ini</span>
+                        <span class="d-none" id="your-like-balas-komentar-count{{$balas_komentar->id}}"><i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$balas_komentar->jumlah_like}} orang</b> menyukai ini</span>
+                        @else
+                        <span class="d-none" id="like-balas-komentar-count{{$balas_komentar->id}}"><i class="fa fa-heart-o"></i> <b>{{$balas_komentar->jumlah_like-1}} orang</b> menyukai ini</span>
+                        <span id="your-like-balas-komentar-count{{$balas_komentar->id}}"><i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$balas_komentar->jumlah_like-1}} orang</b> menyukai ini</span>
+                        @endif
+                      </h5>
+
+                      @if(is_null($balas_komentar->is_liked))
+                      <button class="c-btn mt-2" id="like-balas-komentar-button{{$balas_komentar->id}}" onclick="likeUnlikeBalasKomentar({{$balas_komentar->id}})">Likes</button>
+                      @else
+                      <button class="c-btn mt-2" id="like-balas-komentar-button{{$balas_komentar->id}}" onclick="likeUnlikeBalasKomentar({{$balas_komentar->id}})">Unlikes</button>
+                      @endif
                     </div>
                   </div>
                 </li>
@@ -233,6 +251,50 @@
 
       $.ajax({
         url: "/member/like-komentar/" + id,
+        type: "DELETE",
+        dataType: 'json',
+        data: {
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+    }
+  }
+
+
+  function likeUnlikeBalasKomentar(id) {
+    let likeBalasKomentarButton = document.getElementById('like-balas-komentar-button' + id);
+    let likeBalasKomentarCount = document.getElementById('like-balas-komentar-count' + id);
+    let yourLikeBalasKomentarCount = document.getElementById('your-like-balas-komentar-count' + id);
+
+    if (yourLikeBalasKomentarCount.classList.contains('d-none')) {
+      console.log('Like Balas Komentar');
+      yourLikeBalasKomentarCount.classList.remove('d-none');
+      likeBalasKomentarCount.classList.add('d-none');
+      likeBalasKomentarButton.innerHTML = "Unlikes";
+
+      $.ajax({
+        url: "/member/like-balas-komentar",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id: id,
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+    } else {
+      console.log('UnLike Balas Komentar');
+      likeBalasKomentarCount.classList.remove('d-none');
+      yourLikeBalasKomentarCount.classList.add('d-none');
+      likeBalasKomentarButton.innerHTML = "Likes";
+
+      $.ajax({
+        url: "/member/like-balas-komentar/" + id,
         type: "DELETE",
         dataType: 'json',
         data: {

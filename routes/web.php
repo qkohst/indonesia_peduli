@@ -69,6 +69,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('like-komentar', 'Member\LikeKomentarController',  [
                 'uses' => ['store', 'destroy']
             ]);
+
+            Route::resource('like-balas-komentar', 'Member\LikeBalasKomentarController',  [
+                'uses' => ['store', 'destroy']
+            ]);
         });
     });
 });

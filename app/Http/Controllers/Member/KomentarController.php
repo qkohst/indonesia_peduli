@@ -6,6 +6,7 @@ use App\BalasKomentar;
 use App\Donasi;
 use App\Http\Controllers\Controller;
 use App\Komentar;
+use App\LikeBalasKomentar;
 use App\LikeKomentar;
 use App\LikeProgramDonasi;
 use App\ProgramDonasi;
@@ -72,6 +73,14 @@ class KomentarController extends Controller
             }
 
             $komentar->data_balas_komentar = BalasKomentar::where('komentar_id', $komentar->id)->orderBy('created_at', 'DESC')->get();
+            foreach ($komentar->data_balas_komentar as $balas_komentar) {
+                $balas_komentar->jumlah_like = LikeBalasKomentar::where('balas_komentar_id', $balas_komentar->id)->count();
+                if (Auth::user()) {
+                    $balas_komentar->is_liked = LikeBalasKomentar::where('balas_komentar_id', $balas_komentar->id)->where('user_id', Auth::user()->id)->first();
+                } else {
+                    $balas_komentar->is_liked = null;
+                }
+            }
         }
 
         return view('landing-page.semua-komentar', compact(
@@ -80,5 +89,4 @@ class KomentarController extends Controller
             'data_komentar'
         ));
     }
-
 }

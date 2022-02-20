@@ -22,4 +22,9 @@ class BalasKomentar extends Model
     {
         return $this->belongsTo('App\Komentar');
     }
+
+    public function like_balas_komentar()
+    {
+        return $this->hasMany('App\LikeBalasKomentar');
+    }
 }
