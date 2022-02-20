@@ -113,11 +113,39 @@
                   <!-- end recent activity -->
                 </div>
                 <div class="tab-pane fade" id="komentar" role="tabpanel" aria-labelledby="komentar-tab">
-                  xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                  booth letterpress, commodo enim craft beer mlkshk
+                  <ul class="messages">
+                    @if($data_komentar->count() == 0)
+                    <blockquote class="message"><b>Belum ada komentar</b></blockquote>
+                    @endif
+
+                    @foreach($data_komentar as $komentar)
+                    <li>
+                      <img src="/avatar/{{$komentar->user->avatar}}" class="avatar" alt="Avatar">
+                      <div class="message_wrapper">
+                        <h4 class="heading">{{$komentar->user->nama_lengkap}}</h4>
+                        <blockquote class="message">{{$komentar->created_at->diffForhumans()}}</blockquote>
+                        <p class="mr-4 mt-2">{{$komentar->komentar}}</p>
+
+                        @foreach($komentar->data_balas_komentar as $balas_komentar)
+                        <ul class="messages">
+                          <li>
+                            <img src="/avatar/{{$balas_komentar->user->avatar}}" class="avatar" alt="Avatar">
+                            <div class="message_wrapper">
+                              <h4 class="heading">{{$balas_komentar->user->nama_lengkap}}</h4>
+                              <blockquote class="message">{{$balas_komentar->created_at->diffForhumans()}}</blockquote>
+                              <p class="mr-4 mt-2">{{$balas_komentar->komentar_balas}}</p>
+                            </div>
+                          </li>
+                        </ul>
+                        @endforeach
+                        
+                      </div>
+                    </li>
+                    @endforeach
+                  </ul>
                 </div>
               </div>
-
+              <!-- LANJUT FORM COMENT -->
             </div>
           </div>
         </div>

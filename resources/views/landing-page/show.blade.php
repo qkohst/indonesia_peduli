@@ -45,9 +45,29 @@
             </a>
           </div>
 
-          <div class="row mt-2">
+          @if(is_null($program_donasi->is_liked))
+          <p id="like-count">
+            <i class="fa fa-heart-o"></i> <b>{{$program_donasi->jumlah_like}} orang</b> menyukai ini
+          </p>
+          <p class="d-none" id="your-like-count">
+            <i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$program_donasi->jumlah_like}} orang lainnya</b> menyukai ini
+          </p>
+          @else
+          <p class="d-none" id="like-count">
+            <i class="fa fa-heart-o"></i> <b>{{$program_donasi->jumlah_like-1}} orang</b> menyukai ini
+          </p>
+          <p id="your-like-count">
+            <i class="fa fa-heart"></i> <b>Kamu</b> dan <b>{{$program_donasi->jumlah_like-1}} orang lainnya</b> menyukai ini
+          </p>
+          @endif
+
+          <div class="row mt-1">
             <div class="col-lg-6">
-              <a href="#" class="site-btn btn-block sb-line mt-2"><i class="fa fa-heart-o"></i> Likes</a>
+              @if(is_null($program_donasi->is_liked))
+              <button class="site-btn btn-block sb-line mt-2 bg-white" id="like-program-button" value="{{$program_donasi->id}}"><i class="fa fa-heart-o"></i> <span id="like-span">Likes</span></button>
+              @else
+              <button class="site-btn btn-block sb-gradients mt-2" id="like-program-button" value="{{$program_donasi->id}}"><i class="fa fa-heart-o"></i> <span id="like-span">Unlikes</span></button>
+              @endif
             </div>
             <div class="col-lg-6">
               <button type="button" class="site-btn btn-block sbg-line mt-2 bg-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -284,5 +304,67 @@
     document.getElementById("formReplay" + id).style.display = "none";
     document.getElementById("replayComment" + id).style.display = "none";
   }
+</script>
+
+<script>
+  let likeProgramButton = document.getElementById('like-program-button');
+  let likeCount = document.getElementById('like-count');
+  let yourLikeCount = document.getElementById('your-like-count');
+  let likeSpan = document.getElementById('like-span');
+
+  likeProgramButton.addEventListener('click', function(e) {
+    var program_donasi_id = $(this).val();
+
+    if (likeProgramButton.classList.contains('sb-line')) {
+      console.log('Like');
+      likeProgramButton.classList.remove('sb-line');
+      likeProgramButton.classList.remove('bg-white');
+      likeProgramButton.classList.add('sb-gradients');
+
+      likeSpan.innerHTML = "Unlikes";
+
+      likeCount.classList.add('d-none');
+      yourLikeCount.classList.remove('d-none');
+
+      $.ajax({
+        url: "/member/like-program",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id: program_donasi_id,
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+      e.preventDefault();
+
+    } else {
+      console.log('Unlike');
+      likeProgramButton.classList.remove('sb-gradients');
+      likeProgramButton.classList.add('sb-line');
+      likeProgramButton.classList.add('bg-white');
+
+      likeSpan.innerHTML = "Likes";
+
+      likeCount.classList.remove('d-none');
+      yourLikeCount.classList.add('d-none');
+
+      $.ajax({
+        url: "/member/like-program/" + program_donasi_id,
+        type: "DELETE",
+        dataType: 'json',
+        data: {
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(result) {
+          console.log(result);
+        }
+      });
+      e.preventDefault();
+
+    }
+  });
 </script>
 @include('layouts.landing-page.footer')

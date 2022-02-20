@@ -65,7 +65,6 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	@include('sweetalert::alert')
-
 	<script src="/landing-page-assets/js/bootstrap.js"></script>
 	<script src="/landing-page-assets/js/jquery-3.2.1.min.js"></script>
 	<script src="/landing-page-assets/js/owl.carousel.min.js"></script>

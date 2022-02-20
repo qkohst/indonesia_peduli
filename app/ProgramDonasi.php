@@ -38,4 +38,9 @@ class ProgramDonasi extends Model
     {
         return $this->hasMany('App\Komentar');
     }
+
+    public function like_program_donasi()
+    {
+        return $this->hasMany('App\LikeProgramDonasi');
+    }
 }

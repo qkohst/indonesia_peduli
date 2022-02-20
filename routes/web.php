@@ -60,8 +60,13 @@ Route::group(['middleware' => ['auth']], function () {
             ]);
 
             Route::post('komentar', 'Member\KomentarController@store')->name('komentar.store');
-
             Route::post('balas-komentar', 'Member\BalasKomentarController@store')->name('balas-komentar.store');
+
+            Route::resource('like-program', 'Member\LikeProgramController',  [
+                'uses' => ['store', 'destroy']
+            ]);
         });
     });
 });
+
+// LANJUT LIKE

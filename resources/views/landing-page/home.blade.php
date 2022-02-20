@@ -5,8 +5,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 hero-text">
-        <h2>Invest in <span>Bitcoin</span> <br>Bitcoin Trading</h2>
-        <h4>Use modern progressive technologies of Bitcoin to earn money</h4>
+        <h2>Peduli Sesama <span>di</span> <br>Indonesia Peduli</h2>
+        <h4>Uluran tangan anda, sangat berharga bagi mereka.</h4>
         <form class="hero-subscribe-from">
           <input type="text" placeholder="Enter your email">
           <button class="site-btn sb-gradients">Get Started</button>
@@ -32,36 +32,42 @@
         <div class="row">
           <!-- blog item -->
           @foreach($data_program_donasi as $program_donasi)
-          <div class="col-lg-4 col-md-6">
-            <div class="blog-item">
-              <figure class="blog-thumb">
-                <img src="/gambar-program-donasi/{{$program_donasi->gambar}}" alt="" height="200px" class="mx-auto d-block">
-              </figure>
-              <div class="blog-text">
-                <div class="post-date">Berakhir {{$program_donasi->batas_akhir_donasi->diffForHumans()}}</div>
-                <h4 class="blog-title"><a href="{{ route('home.show', $program_donasi->id) }}">{{Str::limit($program_donasi->deskripsi, 25, $end='...')}}</a></h4>
+          <a href="{{ route('home.show', $program_donasi->id) }}">
+            <div class="col-lg-4 col-md-6">
+              <div class="blog-item">
+                <figure class="blog-thumb">
+                  <img src="/gambar-program-donasi/{{$program_donasi->gambar}}" alt="" height="200px" class="mx-auto d-block">
+                </figure>
+                <div class="blog-text">
+                  <div class="post-date">Berakhir {{$program_donasi->batas_akhir_donasi->diffForHumans()}}</div>
+                  <h4 class="blog-title">{{Str::limit($program_donasi->deskripsi, 25, $end='...')}}</h4>
 
-                <div class=" progress" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: {{$program_donasi->prosentasi_terdanai}}%" aria-valuenow="{{$program_donasi->prosentasi_terdanai}}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                  <div class=" progress" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: {{$program_donasi->prosentasi_terdanai}}%" aria-valuenow="{{$program_donasi->prosentasi_terdanai}}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
 
-                <div class="post-meta">
-                  <a><span>Terdanai</span></a>
-                  <a class="float-right"><span>Kekurangan</span></a>
-                </div>
-                <div class="post-meta">
-                  <a>{{rupiah($program_donasi->terdanai)}}</a>
-                  <a class="float-right">{{rupiah($program_donasi->kebutuhan_dana - $program_donasi->terdanai)}}</a>
-                </div>
+                  <div class="post-meta">
+                    <a><span>Terdanai</span></a>
+                    <a class="float-right"><span>Kekurangan</span></a>
+                  </div>
+                  <div class="post-meta">
+                    <a>{{rupiah($program_donasi->terdanai)}}</a>
+                    <a class="float-right">{{rupiah($program_donasi->kebutuhan_dana - $program_donasi->terdanai)}}</a>
+                  </div>
 
-                <div class="post-meta mt-2">
-                  <a href=""><i class="fa fa-users"></i> {{$program_donasi->jumlah_donatur}} donatur</a>
-                  <a href=""><i class="fa fa-heart-o"></i> 0 likes</a>
-                  <a href="{{ route('komentar.show', $program_donasi->id) }}"><i class="fa fa-comments-o"></i> {{$program_donasi->jumlah_komentar}} comments</a>
+                  <div class="post-meta mt-2">
+                    <a><i class="fa fa-users"></i> {{$program_donasi->jumlah_donatur}} donatur</a>
+                    @if(is_null($program_donasi->is_liked))
+                    <a><i class="fa fa-heart-o"></i> {{$program_donasi->jumlah_like}} likes</a>
+                    @else
+                    <a><i class="fa fa-heart"></i> {{$program_donasi->jumlah_like}} likes</a>
+                    @endif
+                    <a><i class="fa fa-comments-o"></i> {{$program_donasi->jumlah_komentar}} comments</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
           @endforeach
         </div>
         <button class="post-loadmore site-btn sb-gradients sbg-line mt-5">LOAD MORE</button>
