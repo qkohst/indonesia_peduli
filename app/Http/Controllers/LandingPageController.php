@@ -9,6 +9,7 @@ use App\Komentar;
 use App\LikeBalasKomentar;
 use App\LikeKomentar;
 use App\LikeProgramDonasi;
+use App\PenyaluranDana;
 use App\ProgramDonasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,8 @@ class LandingPageController extends Controller
             $program_donasi->is_liked = null;
         }
 
+        $data_penyaluran_dana = PenyaluranDana::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->get();
+
         $data_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->limit(3)->get();
         foreach ($data_komentar as $komentar) {
             $komentar->jumlah_like = LikeKomentar::where('komentar_id', $komentar->id)->count();
@@ -85,6 +88,7 @@ class LandingPageController extends Controller
             'program_donasi',
             'data_donatur',
             'data_komentar',
+            'data_penyaluran_dana'
         ));
     }
 }

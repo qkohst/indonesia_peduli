@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\LikeBalasKomentar');
     }
+
+    public function penyaluran_dana()
+    {
+        return $this->hasMany('App\PenyaluranDana');
+    }
 }

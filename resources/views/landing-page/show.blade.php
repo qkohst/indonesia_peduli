@@ -247,7 +247,26 @@
             <div class="tab-pane fade" id="nav-penyaluran" role="tabpanel" aria-labelledby="nav-penyaluran-tab">
               <h4 class="mb-2">Penyaluran Dana</h4>
               <hr>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere maxime iste ratione magni, animi eligendi repellat delectus cum dolores sed ad ex laborum exercitationem et, necessitatibus optio dolore aliquid totam?
+              <h4>Total Dana Telah Disalurkan <span class="float-right">{{rupiah($data_penyaluran_dana->sum('jumlah'))}}</span></h4>
+              <p>Berikut adalah detail transaksi pencairan dana :</p>
+              <table class="data table table-striped no-margin">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Jumlah Dana</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($data_penyaluran_dana as $penyaluran_dana)
+                  <tr>
+                    <td>{{$penyaluran_dana->created_at->format('d M Y')}}</td>
+                    <td>{{$penyaluran_dana->keterangan}}</td>
+                    <td>{{rupiah($penyaluran_dana->jumlah)}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
             </div>
           </div>
 

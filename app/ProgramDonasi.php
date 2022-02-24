@@ -43,4 +43,9 @@ class ProgramDonasi extends Model
     {
         return $this->hasMany('App\LikeProgramDonasi');
     }
+
+    public function penyaluran_dana()
+    {
+        return $this->hasMany('App\PenyaluranDana');
+    }
 }

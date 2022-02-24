@@ -7,6 +7,10 @@ use App\Donasi;
 use App\Http\Controllers\Controller;
 use App\KategoriDonasi;
 use App\Komentar;
+use App\LikeBalasKomentar;
+use App\LikeKomentar;
+use App\LikeProgramDonasi;
+use App\PenyaluranDana;
 use App\ProgramDonasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -99,15 +103,25 @@ class ProgramDonasiController extends Controller
     {
         $title = 'Detail Program Donasi';
         $program_donasi = ProgramDonasi::findorfail($id);
+        $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
+
         $data_donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->orderBy('id', 'DESC')->get();
+        $data_penyaluran_dana = PenyaluranDana::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->get();
+
         $data_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->get();
         foreach ($data_komentar as $komentar) {
+            $komentar->jumlah_like = LikeKomentar::where('komentar_id', $komentar->id)->count();
+
             $komentar->data_balas_komentar = BalasKomentar::where('komentar_id', $komentar->id)->orderBy('created_at', 'DESC')->get();
+            foreach ($komentar->data_balas_komentar as $balas_komentar) {
+                $balas_komentar->jumlah_like = LikeBalasKomentar::where('balas_komentar_id', $balas_komentar->id)->count();
+            }
         }
         return view('admin.program-donasi.show', compact(
             'title',
             'program_donasi',
             'data_donasi',
+            'data_penyaluran_dana',
             'data_komentar'
         ));
     }
