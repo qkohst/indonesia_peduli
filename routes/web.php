@@ -19,6 +19,7 @@ Route::get('/unauthorized', function () {
 });
 
 Route::get('/', 'LandingPageController@index')->name('home');
+Route::get('/program', 'LandingPageController@all')->name('home.all');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
 
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
@@ -78,4 +79,4 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-// LANJUT ADMIN PENYALURAN DANA
+// LANJUT LANDING PAGE CONTENT 

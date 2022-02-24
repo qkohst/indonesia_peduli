@@ -104,12 +104,6 @@
                             <a href="#"><i class="fa fa-link"></i></a>
                           </li>
                         </ul>
-                        <!-- <a href="" class="bg-success"><i class="fa fa-whatsapp"></i></a>
-                        <a href="" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="http://www.facebook.com/sharer.php?u=https://dumetschool.com" target="_black"><i class="fa-facebook-square"></i></a>
-                        <a href="https://twitter.com/share?url=https://dumetschool.com&text=Simple%20Share%20Buttons&hashtags=simplesharebuttons" target="_black" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="https://plus.google.com/share?url=https://dumetschool.com" target="_black" class="google"><i class="fa fa-google-plus"></i></a>
-                        <a href="" class="bg-secondary"><i class="fa fa-link"></i></a> -->
                       </div>
                     </div>
                     <div class="modal-footer">

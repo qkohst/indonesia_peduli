@@ -33,8 +33,8 @@
   <!-- Header section -->
   <header class="header-section clearfix">
     <div class="container">
-      <a href="index.html" class="site-logo">
-        <img src="/" alt="">
+      <a href="/" class="site-logo">
+        <img src="/landing-page-assets/img/logo.png" alt="">
       </a>
       <div class="responsive-bar"><i class="fa fa-bars"></i></div>
       <a href="" class="site-btn">Donasi Sekarang</a>

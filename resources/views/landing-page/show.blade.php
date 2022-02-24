@@ -270,60 +270,52 @@
             </div>
           </div>
 
+          @if($data_program_donasi_serupa->count() != 0)
           <div class="releted-posts">
             <h4>Program Donasi Serupa</h4>
             <div class="row">
-              <div class="col-md-4">
-                <div class="blog-item">
-                  <figure class="blog-thumb">
-                    <img src="/landing-page-assets/img/blog/1.jpg" alt="">
-                  </figure>
-                  <div class="blog-text">
-                    <div class="post-date">22 dec 2018</div>
-                    <h4 class="blog-title"><a href="">Blockchain Rolls Out Trading Feature for 22 States in the U.S</a></h4>
-                    <div class="post-meta">
-                      <a href=""><span>by</span> Admin</a>
-                      <a href=""><i class="fa fa-heart-o"></i> 234 Likes</a>
-                      <a href=""><i class="fa fa-comments-o"></i> 08 comments</a>
+              @foreach($data_program_donasi_serupa as $donasi_serupa)
+              <a href="{{ route('home.show', $donasi_serupa->id) }}">
+                <div class="col-md-4">
+                  <div class="blog-item">
+                    <figure class="blog-thumb">
+                      <img src="/gambar-program-donasi/{{$donasi_serupa->gambar}}" alt="" height="200px" class="mx-auto d-block">
+                    </figure>
+                    <div class="blog-text">
+                      <div class="post-date">Berakhir {{$donasi_serupa->batas_akhir_donasi->diffForHumans()}}</div>
+                      <h4 class="blog-title">{{Str::limit($donasi_serupa->deskripsi, 25, $end='...')}}</h4>
+
+                      <div class=" progress" style="height: 5px;">
+                        <div class="progress-bar" role="progressbar" style="width: {{$donasi_serupa->prosentasi_terdanai}}%" aria-valuenow="{{$donasi_serupa->prosentasi_terdanai}}" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+
+                      <div class="post-meta">
+                        <a class="float-left"><span>Terdanai</span></a>
+                        <a class="float-right"><span>Kekurangan</span></a>
+                      </div>
+                      <div class="post-meta">
+                        <a>{{rupiah($donasi_serupa->terdanai)}}</a>
+                        <a class="float-right">{{rupiah($donasi_serupa->kebutuhan_dana - $donasi_serupa->terdanai)}}</a>
+                      </div>
+
+                      <div class="post-meta mt-2">
+                        <a><i class="fa fa-users"></i> {{$donasi_serupa->jumlah_donatur}} donatur</a>
+                        @if(is_null($donasi_serupa->is_liked))
+                        <a><i class="fa fa-heart-o"></i> {{$donasi_serupa->jumlah_like}} likes</a>
+                        @else
+                        <a><i class="fa fa-heart"></i> {{$donasi_serupa->jumlah_like}} likes</a>
+                        @endif
+                        <a><i class="fa fa-comments-o"></i> {{$donasi_serupa->jumlah_komentar}} comments</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="blog-item">
-                  <figure class="blog-thumb">
-                    <img src="/landing-page-assets/img/blog/1.jpg" alt="">
-                  </figure>
-                  <div class="blog-text">
-                    <div class="post-date">22 dec 2018</div>
-                    <h4 class="blog-title"><a href="">Blockchain Rolls Out Trading Feature for 22 States in the U.S</a></h4>
-                    <div class="post-meta">
-                      <a href=""><span>by</span> Admin</a>
-                      <a href=""><i class="fa fa-heart-o"></i> 234 Likes</a>
-                      <a href=""><i class="fa fa-comments-o"></i> 08 comments</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="blog-item">
-                  <figure class="blog-thumb">
-                    <img src="/landing-page-assets/img/blog/1.jpg" alt="">
-                  </figure>
-                  <div class="blog-text">
-                    <div class="post-date">22 dec 2018</div>
-                    <h4 class="blog-title"><a href="">Blockchain Rolls Out Trading Feature for 22 States in the U.S</a></h4>
-                    <div class="post-meta">
-                      <a href=""><span>by</span> Admin</a>
-                      <a href=""><i class="fa fa-heart-o"></i> 234 Likes</a>
-                      <a href=""><i class="fa fa-comments-o"></i> 08 comments</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
+              @endforeach
             </div>
-            <button class="post-loadmore site-btn sb-gradients sbg-line mt-5">LIHAT PROGRAM LAIN</button>
           </div>
+          @endif
+          <a href="{{ route('home.all') }}" class="post-loadmore site-btn sb-gradients sbg-line mt-5">LIHAT PROGRAM LAIN</a>
         </div>
 
       </div>

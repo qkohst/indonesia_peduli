@@ -19,26 +19,74 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = 'Home';
-        $data_program_donasi = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
-        foreach ($data_program_donasi as $program_donasi) {
-            $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
+        $data_program_donasi_mendesak_id = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get('id');
+        $data_program_donasi_mendesak = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
+        foreach ($data_program_donasi_mendesak as $program_donasi_mendesak) {
+            $donasi = Donasi::where('program_donasi_id', $program_donasi_mendesak->id)->where('transaction_status', 'settlement')->get();
 
-            $program_donasi->terdanai = $donasi->sum('gross_amount');
-            $program_donasi->jumlah_donatur = $donasi->count();
-            $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
-            $program_donasi->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->count();
-            $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
+            $program_donasi_mendesak->terdanai = $donasi->sum('gross_amount');
+            $program_donasi_mendesak->jumlah_donatur = $donasi->count();
+            $program_donasi_mendesak->prosentasi_terdanai = $program_donasi_mendesak->terdanai / $program_donasi_mendesak->kebutuhan_dana * 100;
+            $program_donasi_mendesak->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi_mendesak->id)->count();
+            $program_donasi_mendesak->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi_mendesak->id)->count();
 
             if (Auth::user()) {
-                $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+                $program_donasi_mendesak->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi_mendesak->id)->where('user_id', Auth::user()->id)->first();
             } else {
-                $program_donasi->is_liked = null;
+                $program_donasi_mendesak->is_liked = null;
+            }
+        }
+
+        $data_program_donasi_lain = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->whereNotIn('id', $data_program_donasi_mendesak_id)->orderBy('batas_akhir_donasi', 'ASC')->limit('9')->get();
+        foreach ($data_program_donasi_lain as $program_donasi_lain) {
+            $donasi = Donasi::where('program_donasi_id', $program_donasi_lain->id)->where('transaction_status', 'settlement')->get();
+
+            $program_donasi_lain->terdanai = $donasi->sum('gross_amount');
+            $program_donasi_lain->jumlah_donatur = $donasi->count();
+            $program_donasi_lain->prosentasi_terdanai = $program_donasi_lain->terdanai / $program_donasi_lain->kebutuhan_dana * 100;
+            $program_donasi_lain->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi_lain->id)->count();
+            $program_donasi_lain->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi_lain->id)->count();
+
+            if (Auth::user()) {
+                $program_donasi_lain->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi_lain->id)->where('user_id', Auth::user()->id)->first();
+            } else {
+                $program_donasi_lain->is_liked = null;
             }
         }
 
         return view('landing-page.home', compact(
             'title',
-            'data_program_donasi'
+            'data_program_donasi_mendesak',
+            'data_program_donasi_lain',
+        ));
+    }
+
+    public function all()
+    {
+        $title = 'Semua Program';
+        $data_kategori_donasi = KategoriDonasi::all();
+        foreach ($data_kategori_donasi as $kategori_donasi) {
+            $kategori_donasi->data_program_donasi = ProgramDonasi::where('kategori_donasi_id', $kategori_donasi->id)->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
+            foreach ($kategori_donasi->data_program_donasi as $program_donasi) {
+                $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
+
+                $program_donasi->terdanai = $donasi->sum('gross_amount');
+                $program_donasi->jumlah_donatur = $donasi->count();
+                $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
+                $program_donasi->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->count();
+                $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
+
+                if (Auth::user()) {
+                    $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+                } else {
+                    $program_donasi->is_liked = null;
+                }
+            }
+        }
+
+        return view('landing-page.semua-program', compact(
+            'title',
+            'data_kategori_donasi'
         ));
     }
 
@@ -82,13 +130,29 @@ class LandingPageController extends Controller
 
         $data_komentar->count = Komentar::where('program_donasi_id', $program_donasi->id)->orderBy('created_at', 'DESC')->count();
 
+        $data_program_donasi_serupa = ProgramDonasi::where('kategori_donasi_id', $program_donasi->kategori_donasi_id)->where('id', '!=', $program_donasi->id)->orderBy('batas_akhir_donasi', 'ASC')->limit('3')->get();
+        foreach ($data_program_donasi_serupa as $program_donasi_serupa) {
+            $donasi = Donasi::where('program_donasi_id', $program_donasi_serupa->id)->where('transaction_status', 'settlement')->get();
 
+            $program_donasi_serupa->terdanai = $donasi->sum('gross_amount');
+            $program_donasi_serupa->jumlah_donatur = $donasi->count();
+            $program_donasi_serupa->prosentasi_terdanai = $program_donasi_serupa->terdanai / $program_donasi_serupa->kebutuhan_dana * 100;
+            $program_donasi_serupa->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi_serupa->id)->count();
+            $program_donasi_serupa->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi_serupa->id)->count();
+
+            if (Auth::user()) {
+                $program_donasi_serupa->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi_serupa->id)->where('user_id', Auth::user()->id)->first();
+            } else {
+                $program_donasi_serupa->is_liked = null;
+            }
+        }
         return view('landing-page.show', compact(
             'title',
             'program_donasi',
             'data_donatur',
             'data_komentar',
-            'data_penyaluran_dana'
+            'data_penyaluran_dana',
+            'data_program_donasi_serupa'
         ));
     }
 }
