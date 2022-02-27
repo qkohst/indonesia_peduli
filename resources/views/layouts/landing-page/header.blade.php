@@ -41,7 +41,7 @@
       <nav class="main-menu">
         <ul class="menu-list">
           <li><a href="/">Donasi</a></li>
-          <li><a href="">Galang Dana</a></li>
+          <!-- <li><a href="">Galang Dana</a></li> -->
           <li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
           <li><a href="">Tentang Kami</a></li>
           <li><a href="">Contact</a></li>

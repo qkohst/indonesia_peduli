@@ -1,30 +1,46 @@
 @include('layouts.landing-page.header')
 
-<!-- Hero section -->
-<section class="hero-section">
+<section class="page-info-section">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 hero-text">
-        <h2>Peduli Sesama <span>di</span> <br>Indonesia Peduli</h2>
-        <h4>Uluran tangan anda, sangat berharga bagi mereka.</h4>
-        <form class="hero-subscribe-from">
-          <input type="text" placeholder="Enter your email">
-          <button class="site-btn sb-gradients">Get Started</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <img src="/landing-page-assets/img/laptop.png" class="laptop-image" alt="">
-      </div>
+    <h2>Indonesia Peduli</h2>
+    <div class="site-beradcamb">
+      <a href="/">Indonesia Peduli</a>
+      <span><i class="fa fa-angle-right"></i> {{$title}}</span>
     </div>
   </div>
 </section>
-<!-- Hero section end -->
+<!-- Page info end -->
+
+<!-- Review section -->
+<section class="review-section spad">
+  <div class="container">
+    <div class="review-text-slider owl-carousel">
+      @foreach($data_program_donasi_utama as $program_donasi_utama)
+      <div class="review-text">
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="/gambar-program-donasi/{{$program_donasi_utama->gambar}}" alt="" class="mx-auto">
+          </div>
+          <div class="col-lg-7">
+            <h3>{{$program_donasi_utama->judul}}</h3>
+            <p><b>{{$program_donasi_utama->deskripsi}}</b></p>
+            <p>{!!Str::limit($program_donasi_utama->kisah, 300, $end='...')!!}</p>
+            <a href="{{ route('home.show', $program_donasi_utama->id) }}" class="site-btn sb-gradients sbg-line mt-2 mb-2">Donasi Sekarang</a>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+<!-- Review section end -->
+
 
 <!-- Blog section -->
-<section class="blog-page spad pb-2">
+<section class="team-section spad pb-4 pt-4">
   <div class="container">
     <div class="section-title text-center">
-      <h3>Program Donasi Mendesak</h3>
+      <h2>Program Donasi Mendesak</h2>
     </div>
     <div class="row">
       <div class="col-lg-12">
@@ -74,10 +90,10 @@
   </div>
 </section>
 
-<section class="blog-page spad pt-2 mt-0">
+<section class="blog-page spad pt-4">
   <div class="container">
     <div class="section-title text-center">
-      <h3>Program Donasi Lain</h3>
+      <h2>Program Donasi Lain</h2>
     </div>
     <div class="row">
       <div class="col-lg-12">

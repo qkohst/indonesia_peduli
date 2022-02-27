@@ -19,8 +19,11 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = 'Home';
-        $data_program_donasi_mendesak_id = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get('id');
-        $data_program_donasi_mendesak = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
+
+        $data_program_donasi_utama = ProgramDonasi::where('kategori_donasi_id', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
+
+        $data_program_donasi_mendesak_id = ProgramDonasi::where('kategori_donasi_id', '!=', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get('id');
+        $data_program_donasi_mendesak = ProgramDonasi::where('kategori_donasi_id', '!=', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
         foreach ($data_program_donasi_mendesak as $program_donasi_mendesak) {
             $donasi = Donasi::where('program_donasi_id', $program_donasi_mendesak->id)->where('transaction_status', 'settlement')->get();
 
@@ -37,7 +40,7 @@ class LandingPageController extends Controller
             }
         }
 
-        $data_program_donasi_lain = ProgramDonasi::where('batas_akhir_donasi', '>=', now())->whereNotIn('id', $data_program_donasi_mendesak_id)->orderBy('batas_akhir_donasi', 'ASC')->limit('9')->get();
+        $data_program_donasi_lain = ProgramDonasi::where('kategori_donasi_id', '!=', '1')->where('batas_akhir_donasi', '>=', now())->whereNotIn('id', $data_program_donasi_mendesak_id)->orderBy('batas_akhir_donasi', 'ASC')->limit('9')->get();
         foreach ($data_program_donasi_lain as $program_donasi_lain) {
             $donasi = Donasi::where('program_donasi_id', $program_donasi_lain->id)->where('transaction_status', 'settlement')->get();
 
@@ -56,6 +59,7 @@ class LandingPageController extends Controller
 
         return view('landing-page.home', compact(
             'title',
+            'data_program_donasi_utama',
             'data_program_donasi_mendesak',
             'data_program_donasi_lain',
         ));

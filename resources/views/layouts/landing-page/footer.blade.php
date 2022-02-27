@@ -4,16 +4,16 @@
 			<div class="row spad">
 				<div class="col-md-6 col-lg-3 footer-widget">
 					<img src="/landing-page-assets/img/logo.png" class="mb-4" alt="">
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
+					<p>Indonesia Peduli adalah situs web yang dibangun khusus untuk menggalang dana bantuan kesehatan dan donasi secara online</p>
 					<span>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
-						</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						</script> Qkoh St | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 				</div>
 				<div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
-					<h5 class="widget-title">Resources</h5>
+					<h5 class="widget-title">Kategori</h5>
 					<ul>
 						<li><a href="#">How to Buy Coin</a></li>
 						<li><a href="#">Coin Overview</a></li>
@@ -23,7 +23,7 @@
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
-					<h5 class="widget-title">Quick Links</h5>
+					<h5 class="widget-title">Menu Utama</h5>
 					<ul>
 						<li><a href="#">Network Stats</a></li>
 						<li><a href="#">Block Explorers</a></li>
@@ -33,7 +33,7 @@
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">
-					<h5 class="widget-title">Follow Us</h5>
+					<h5 class="widget-title">Ikuti Kami</h5>
 					<div class="social">
 						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
 						<a href="" class="google"><i class="fa fa-google-plus"></i></a>

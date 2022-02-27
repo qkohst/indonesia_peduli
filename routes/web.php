@@ -19,10 +19,13 @@ Route::get('/unauthorized', function () {
 });
 
 Route::get('/', 'LandingPageController@index')->name('home');
+
+// Donasi Umum 
 Route::get('/program', 'LandingPageController@all')->name('home.all');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
-
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
+
+// Donasi Utama
 
 Route::get('auth/login', 'AuthController@view_login')->name('login');
 Route::post('auth/login', 'AuthController@post_login')->name('login');
@@ -79,4 +82,4 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-// LANJUT LANDING PAGE CONTENT 
+// LANJUT ADMIN TENTANG KAMI 
