@@ -43,17 +43,15 @@
       <nav class="main-menu">
         <ul class="menu-list">
           <li><a href="/">Donasi</a></li>
-          <!-- <li><a href="">Galang Dana</a></li> -->
           <li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
+          <li><a href="{{ route('home.transparansi') }}">Transparansi</a></li>
           <li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
-          <li><a href="">Contact</a></li>
-
+          <li><a href="#">Kontak Kami</a></li>
           @if (Auth::check())
           <li><a href="{{ route('member.profile') }}"><i class="fa fa-user"></i> {{Auth::user()->nama_lengkap}}</a></li>
           @else
           <li><a href="{{ route('login') }}">Masuk</a></li>
           @endif
-
         </ul>
       </nav>
     </div>

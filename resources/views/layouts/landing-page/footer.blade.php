@@ -2,31 +2,22 @@
 	<footer class="footer-section">
 		<div class="container">
 			<div class="row spad">
-				<div class="col-md-6 col-lg-3 footer-widget">
+				<div class="col-md-6 col-lg-4 footer-widget">
 					<img src="/landing-page-assets/img/logo.png" class="mb-4" alt="">
 					<p>Indonesia Peduli adalah situs web yang dibangun khusus untuk menggalang dana bantuan kesehatan dan donasi secara online</p>
 					<span>
 						Jalan Salihara No. 41A, Pasar Minggu, Jakarta Selatan <a href="#" target="_blank">support@wecare.id</a>
 					</span>
 				</div>
-				<div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
-					<h5 class="widget-title">Kategori</h5>
-					<ul>
-						<li><a href="#">How to Buy Coin</a></li>
-						<li><a href="#">Coin Overview</a></li>
-						<li><a href="#">Blog News</a></li>
-						<li><a href="#">How to Sell Coin</a></li>
-						<li><a href="#">Purchase Theme</a></li>
-					</ul>
-				</div>
-				<div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
+
+				<div class="col-md-6 col-lg-3 offset-lg-1 footer-widget">
 					<h5 class="widget-title">Menu Utama</h5>
 					<ul>
-						<li><a href="#">Network Stats</a></li>
-						<li><a href="#">Block Explorers</a></li>
-						<li><a href="#">Governance</a></li>
-						<li><a href="#">Exchange Markets</a></li>
-						<li><a href="#">Get Theme</a></li>
+						<li><a href="/">Donasi</a></li>
+						<li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
+						<li><a href="{{ route('home.transparansi') }}">Transparansi</a></li>
+						<li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
+						<li><a href="#">Kontak Kami</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">

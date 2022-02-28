@@ -23,6 +23,8 @@ Route::get('/', 'LandingPageController@index')->name('home');
 Route::get('/program', 'LandingPageController@all')->name('home.all');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
 Route::get('/program/kategori/{id}', 'LandingPageController@kategori')->name('home.kategori');
+Route::get('/transparansi', 'LandingPageController@transparansi')->name('home.transparansi');
+
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
 
 Route::get('auth/login', 'AuthController@view_login')->name('login');

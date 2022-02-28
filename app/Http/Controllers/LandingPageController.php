@@ -187,4 +187,14 @@ class LandingPageController extends Controller
             'data_program_donasi'
         ));
     }
+
+    public function transparansi()
+    {
+        $title = 'Transparansi Penyaluran Dana';
+        $data_penyaluran_dana = PenyaluranDana::orderBy('created_at', 'DESC')->get();
+        return view('landing-page.transparansi', compact(
+            'title',
+            'data_penyaluran_dana'
+        ));
+    }
 }
