@@ -28,16 +28,25 @@
           <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
           <li><a href="{{ route('kategori-donasi.index') }}"><i class="fa fa-sitemap"></i> Ketegori Donasi</a></li>
           <li><a href="{{ route('program-donasi.index') }}"><i class="fa fa-wheelchair-alt"></i> Program Donasi</a></li>
+        </ul>
+      </div>
 
-          <li><a><i class="fa fa-wheelchair-alt"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
+      <div class="menu_section">
+        <h3>Pengaturan</h3>
+        <ul class="nav side-menu">
+          <li><a><i class="fa fa-building"></i> Tentang Kami <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Donasi Utama</a></li>
-              <li><a href="#">Donasi Umum</a></li>
+              <li><a href="#">Tentang Indonesia Peduli</a></li>
+              <li><a href="#">Partner Kerjasama</a></li>
+              <li><a href="#">Cara Kerja</a></li>
+              <li><a href="#">Anggota Tim</a></li>
             </ul>
           </li>
+          <li><a href="#"><i class="fa fa-user-md"></i> Kontak Kami</a></li>
 
         </ul>
       </div>
+
     </div>
     <!-- /sidebar menu -->
 

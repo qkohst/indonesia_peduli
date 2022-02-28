@@ -70,7 +70,7 @@ class LandingPageController extends Controller
         $title = 'Semua Program';
         $data_kategori_donasi = KategoriDonasi::all();
         foreach ($data_kategori_donasi as $kategori_donasi) {
-            $kategori_donasi->data_program_donasi = ProgramDonasi::where('kategori_donasi_id', $kategori_donasi->id)->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
+            $kategori_donasi->data_program_donasi = ProgramDonasi::where('kategori_donasi_id', $kategori_donasi->id)->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
             foreach ($kategori_donasi->data_program_donasi as $program_donasi) {
                 $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
 
@@ -157,6 +157,34 @@ class LandingPageController extends Controller
             'data_komentar',
             'data_penyaluran_dana',
             'data_program_donasi_serupa'
+        ));
+    }
+
+    public function kategori($id)
+    {
+        $kategori_donasi = KategoriDonasi::findorfail($id);
+        $title = $kategori_donasi->nama_kategori;
+
+        $data_program_donasi = ProgramDonasi::where('kategori_donasi_id', $kategori_donasi->id)->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
+        foreach ($data_program_donasi as $program_donasi) {
+            $donasi = Donasi::where('program_donasi_id', $program_donasi->id)->where('transaction_status', 'settlement')->get();
+
+            $program_donasi->terdanai = $donasi->sum('gross_amount');
+            $program_donasi->jumlah_donatur = $donasi->count();
+            $program_donasi->prosentasi_terdanai = $program_donasi->terdanai / $program_donasi->kebutuhan_dana * 100;
+            $program_donasi->jumlah_komentar = Komentar::where('program_donasi_id', $program_donasi->id)->count();
+            $program_donasi->jumlah_like = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->count();
+
+            if (Auth::user()) {
+                $program_donasi->is_liked = LikeProgramDonasi::where('program_donasi_id', $program_donasi->id)->where('user_id', Auth::user()->id)->first();
+            } else {
+                $program_donasi->is_liked = null;
+            }
+        }
+
+        return view('landing-page.by-kategori', compact(
+            'title',
+            'data_program_donasi'
         ));
     }
 }

@@ -37,13 +37,15 @@
         <img src="/landing-page-assets/img/logo.png" alt="">
       </a>
       <div class="responsive-bar"><i class="fa fa-bars"></i></div>
-      <a href="" class="site-btn">Donasi Sekarang</a>
+      @if (is_null(Auth::user()))
+      <a href="{{ route('register') }}" class="site-btn">Daftar Sekarang</a>
+      @endif
       <nav class="main-menu">
         <ul class="menu-list">
           <li><a href="/">Donasi</a></li>
           <!-- <li><a href="">Galang Dana</a></li> -->
           <li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
-          <li><a href="">Tentang Kami</a></li>
+          <li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
           <li><a href="">Contact</a></li>
 
           @if (Auth::check())

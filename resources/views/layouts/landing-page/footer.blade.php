@@ -6,11 +6,8 @@
 					<img src="/landing-page-assets/img/logo.png" class="mb-4" alt="">
 					<p>Indonesia Peduli adalah situs web yang dibangun khusus untuk menggalang dana bantuan kesehatan dan donasi secara online</p>
 					<span>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> Qkoh St | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+						Jalan Salihara No. 41A, Pasar Minggu, Jakarta Selatan <a href="#" target="_blank">support@wecare.id</a>
+					</span>
 				</div>
 				<div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
 					<h5 class="widget-title">Kategori</h5>
@@ -50,11 +47,15 @@
 					</div>
 					<div class="col-lg-8 text-center text-lg-right">
 						<ul class="footer-nav">
-							<li><a href="">DPA</a></li>
 							<li><a href="">Terms of Use</a></li>
 							<li><a href="">Privacy Policy </a></li>
-							<li><a href="">support@company.com</a></li>
-							<li><a href="">(123) 456-7890</a></li>
+							<li>
+								<a href="">
+									Copyright &copy;<script>
+										document.write(new Date().getFullYear());
+									</script> Qkoh St | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

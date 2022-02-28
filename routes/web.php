@@ -20,17 +20,17 @@ Route::get('/unauthorized', function () {
 
 Route::get('/', 'LandingPageController@index')->name('home');
 
-// Donasi Umum 
 Route::get('/program', 'LandingPageController@all')->name('home.all');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
+Route::get('/program/kategori/{id}', 'LandingPageController@kategori')->name('home.kategori');
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
-
-// Donasi Utama
 
 Route::get('auth/login', 'AuthController@view_login')->name('login');
 Route::post('auth/login', 'AuthController@post_login')->name('login');
 Route::get('auth/register', 'AuthController@view_register')->name('register');
 Route::post('auth/register', 'AuthController@post_register')->name('register');
+
+Route::get('tentang-kami', 'TentangKamiController@index')->name('tentang-kami.index');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('auth/logout', 'AuthController@logout')->name('logout');
