@@ -36,13 +36,13 @@
         <ul class="nav side-menu">
           <li><a><i class="fa fa-building"></i> Tentang Kami <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Tentang Indonesia Peduli</a></li>
+              <li><a href="{{ route('set-tentang.index') }}">Tentang Indonesia Peduli</a></li>
               <li><a href="#">Partner Kerjasama</a></li>
               <li><a href="#">Cara Kerja</a></li>
               <li><a href="#">Anggota Tim</a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-user-md"></i> Kontak Kami</a></li>
+          <!-- <li><a href="#"><i class="fa fa-user-md"></i> Kontak Kami</a></li> -->
 
         </ul>
       </div>

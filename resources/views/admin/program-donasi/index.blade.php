@@ -32,9 +32,10 @@
                           <th>No</th>
                           <th>Judul Donasi</th>
                           <th>Jenis Kategori</th>
-                          <th>Batas Akhir Donasi</th>
                           <th>Kebutuhan Donasi</th>
                           <th>Donasi Terkumpul</th>
+                          <th>Batas Akhir</th>
+                          <th>Status</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -47,9 +48,16 @@
                           <td>{{$no}}</td>
                           <td>{{$program_donasi->judul}}</td>
                           <td>{{$program_donasi->kategori_donasi->nama_kategori}}</td>
-                          <td>{{$program_donasi->batas_akhir_donasi->format('d M Y')}}</td>
                           <td>{{rupiah($program_donasi->kebutuhan_dana)}}</td>
                           <td>{{rupiah($program_donasi->terdanai)}}</td>
+                          <td>{{$program_donasi->batas_akhir_donasi->format('d M Y')}}</td>
+                          <td>
+                            @if ($program_donasi->batas_akhir_donasi > date('Y-m-d H:i:s') )
+                            <span class="badge badge-success">Aktif</span>
+                            @else
+                            <span class="badge badge-danger">Non Aktif</span>
+                            @endif
+                          </td>
                           <td>
                             <form action="{{ route('program-donasi.destroy', $program_donasi->id) }}" method="POST">
                               @csrf

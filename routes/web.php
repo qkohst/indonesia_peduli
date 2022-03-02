@@ -44,6 +44,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);
+
+            Route::resource('set-tentang', 'Admin\TentangKamiController',  [
+                'uses' => ['index', 'edit', 'update']
+            ]);
             Route::resource('program-donasi', 'Admin\ProgramDonasiController');
             Route::post('penyaluran-dana', 'Admin\PenyaluranDanaController@store')->name('penyaluran-dana.store');
         });
