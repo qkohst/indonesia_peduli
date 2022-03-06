@@ -25,8 +25,8 @@
             <h3>{{$program_donasi_utama->judul}}</h3>
             <p><b>{{$program_donasi_utama->deskripsi}}</b></p>
 
-            <p>{!!Str::limit($program_donasi_utama->kisah, 300, $end='...')!!} <a href="{{ route('home.show', $program_donasi_utama->id) }}"> Baca Selengkapnya</a></p>
-            <a href="{{ route('home.show', $program_donasi_utama->id) }}" class="site-btn sb-gradients sbg-line mt-2 mb-2">Donasi Sekarang</a>
+            <p>{!!Str::limit($program_donasi_utama->kisah, 300, $end='...')!!} <a href="{{ route('home.show', $program_donasi_utama->id) }}" target="_black"Baca Selengkapnya</a></p>
+            <a href="{{ route('home.show', $program_donasi_utama->id) }}" target="_black" class="site-btn sb-gradients sbg-line mt-2 mb-2">Donasi Sekarang</a>
           </div>
         </div>
       </div>

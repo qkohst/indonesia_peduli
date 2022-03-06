@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TentangKami;
 use Illuminate\Http\Request;
 
 class TentangKamiController extends Controller
@@ -14,8 +15,11 @@ class TentangKamiController extends Controller
     public function index()
     {
         $title = 'Tentang Kami';
+        $tentang_kami = TentangKami::first();
+        // dd($tentang_kami);
         return view('tentang-kami.index', compact(
-            'title'
+            'title',
+            'tentang_kami'
         ));
     }
 

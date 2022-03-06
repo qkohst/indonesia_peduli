@@ -11,6 +11,7 @@ use App\LikeKomentar;
 use App\LikeProgramDonasi;
 use App\PenyaluranDana;
 use App\ProgramDonasi;
+use App\TentangKami;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,18 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = 'Home';
+        $tantang_kami = TentangKami::first();
+        session([
+            'deskripsi_footer' => $tantang_kami->deksripsi_footer,
+            'alamat' => $tantang_kami->alamat,
+            'email' => $tantang_kami->email,
+            'email' => $tantang_kami->email,
+            'nomor_hp' => $tantang_kami->nomor_hp,
+            'facebook' => $tantang_kami->facebook,
+            'twitter' => $tantang_kami->twitter,
+            'instagram' => $tantang_kami->instagram,
+            'youtube' => $tantang_kami->youtube,
+        ]);
 
         $data_program_donasi_utama = ProgramDonasi::where('kategori_donasi_id', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
 

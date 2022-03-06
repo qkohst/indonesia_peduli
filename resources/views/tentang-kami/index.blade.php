@@ -18,10 +18,8 @@
     <div class="row">
       <div class="col-lg-6 offset-lg-6 about-text">
         <h2>Tentang Indonesia Peduli</h2>
-        <h5>Bitcoin is an innovative payment network and a new kind of money.</h5>
-        <p>Bitcoin is one of the most important inventions in all of human history. For the first time ever, anyone
-          can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without
-          restriction. It’s the dawn of a better, more free world.</p>
+        <h5>{{$tentang_kami->deksripsi_singkat}}</h5>
+        <p>{{$tentang_kami->deksripsi}}</p>
         @if (is_null(Auth::user()))
         <a href="{{ route('register') }}" class="site-btn sb-gradients sbg-line mt-5">Bergabung Sekarang</a>
         @endif

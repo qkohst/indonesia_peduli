@@ -4,9 +4,9 @@
 			<div class="row spad">
 				<div class="col-md-6 col-lg-4 footer-widget">
 					<img src="/landing-page-assets/img/logo.png" class="mb-4" alt="">
-					<p>Indonesia Peduli adalah situs web yang dibangun khusus untuk menggalang dana bantuan kesehatan dan donasi secara online</p>
+					<p>{{session()->get('deskripsi_footer')}}</p>
 					<span>
-						Jalan Salihara No. 41A, Pasar Minggu, Jakarta Selatan <a href="#" target="_blank">support@wecare.id</a>
+					{{session()->get('alamat')}} <a href="#" target="_blank">{{session()->get('email')}}</a>
 					</span>
 				</div>
 
@@ -23,11 +23,11 @@
 				<div class="col-md-6 col-lg-3 footer-widget">
 					<h5 class="widget-title">Ikuti Kami</h5>
 					<div class="social">
-						<a href="" class="bg-success"><i class="fa fa-whatsapp"></i></a>
-						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
-						<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
-						<a href="" class="instagram"><i class="fa fa-instagram"></i></a>
-						<a href="" class="bg-danger"><i class="fa fa-youtube"></i></a>
+						<a href="https://wa.me/{{session()->get('nomor_hp')}}" target="_black" class="bg-success"><i class="fa fa-whatsapp"></i></a>
+						<a href="https://web.facebook.com/{{session()->get('facebook')}}" target="_black" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="https://twitter.com/{{session()->get('twitter')}}" target="_black" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.instagram.com/{{session()->get('instagram')}}" target="_black" class="instagram"><i class="fa fa-instagram"></i></a>
+						<a href="https://www.youtube.com/results?search_query={{session()->get('youtube')}}" target="_black" class="bg-danger"><i class="fa fa-youtube"></i></a>
 					</div>
 				</div>
 			</div>

@@ -21,7 +21,7 @@
       <div class="col-lg-7">
         <form class="contact-form" method="post" action="{{ route('login') }}">
           @csrf
-          <div class="row">
+         <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                 <input class="check-form" type="email" name="email" placeholder="Email">
