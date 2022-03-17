@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="about-img">
-      <img src="/landing-page-assets/img/about-img.png" alt="">
+      <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="">
     </div>
   </div>
 </section>

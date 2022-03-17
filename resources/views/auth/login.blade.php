@@ -21,7 +21,7 @@
       <div class="col-lg-7">
         <form class="contact-form" method="post" action="{{ route('login') }}">
           @csrf
-         <div class="row">
+          <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                 <input class="check-form" type="email" name="email" placeholder="Email">
@@ -42,7 +42,7 @@
         </form>
       </div>
       <div class="col-lg-5 mt-5 mt-lg-0">
-        <img src="/landing-page-assets/img/about-img.png" alt="Images">
+        <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="Images">
       </div>
     </div>
   </div>

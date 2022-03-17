@@ -69,7 +69,7 @@
         </form>
       </div>
       <div class="col-lg-5 mt-5 mt-lg-0">
-        <img src="/landing-page-assets/img/about-img.png" alt="Images">
+        <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="Images">
       </div>
     </div>
   </div>

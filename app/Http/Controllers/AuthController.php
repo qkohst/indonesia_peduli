@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TentangKami;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -12,7 +13,11 @@ class AuthController extends Controller
     public function view_login()
     {
         $title = 'Login';
-        return view('auth.login', compact('title'));
+        $tentang_kami = TentangKami::first();
+        return view('auth.login', compact(
+            'title',
+            'tentang_kami'
+        ));
     }
 
     public function post_login(Request $request)
@@ -35,7 +40,11 @@ class AuthController extends Controller
     public function view_register()
     {
         $title = 'Daftar';
-        return view('auth.register', compact('title'));
+        $tentang_kami = TentangKami::first();
+        return view('auth.register', compact(
+            'title',
+            'tentang_kami'
+        ));
     }
 
     public function post_register(Request $request)

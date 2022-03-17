@@ -16,52 +16,48 @@
           <div class="x_panel">
             <div class="x_title">
               <h2>{{$title}}</h2>
-              <!-- <ul class="nav navbar-right panel_toolbox">
-                <a href="{{ route('program-donasi.create') }}" class="btn btn-sm btn-primary mr-0"><i class="fa fa-plus"></i> Tambah</a>
-              </ul> -->
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
 
               <div class="col-md-7 col-sm-7 ">
                 <div class="product-image">
-                  <img src="/landing-page-assets/img/about-img.png" alt="Gambar" />
+                  <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="Gambar" />
                 </div>
               </div>
 
               <div class="col-md-5 col-sm-5 " style="border:0px solid #e5e5e5;">
-                <h2 class="prod_title">Indonesia Peduli</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, aliquid id tempore nobis dignissimos dolorum numquam corrupti sit voluptas eligendi blanditiis, inventore laudantium non perferendis, natus voluptatem tenetur ipsum labore!</p>
-
+                <h2 class="prod_title">{{$tentang_kami->deksripsi_singkat}}</h2>
+                <p>{{$tentang_kami->deksripsi_footer}}</p>
                 <ul class="list-unstyled user_data">
                   <li>
-                    <i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
+                    <i class="fa fa-map-marker user-profile-icon"></i> {{$tentang_kami->alamat}}
                   </li>
                   <li>
-                    <i class="fa fa-envelope user-profile-icon"></i> kukohsantoso013@gmail.com
+                    <i class="fa fa-envelope user-profile-icon"></i> {{$tentang_kami->email}}
                   </li>
                   <li>
-                    <i class="fa fa-phone user-profile-icon"></i> 085232077932
+                    <i class="fa fa-phone user-profile-icon"></i> {{$tentang_kami->nomor_hp}}
                   </li>
                   <li>
-                    <i class="fa fa-facebook user-profile-icon"></i> qkohst
+                    <i class="fa fa-facebook user-profile-icon"></i> {{$tentang_kami->facebook}}
                   </li>
                   <li>
-                    <i class="fa fa-twitter user-profile-icon"></i> qkohst
+                    <i class="fa fa-twitter user-profile-icon"></i> {{$tentang_kami->twitter}}
                   </li>
                   <li>
-                    <i class="fa fa-instagram user-profile-icon"></i> qkohst
+                    <i class="fa fa-instagram user-profile-icon"></i> {{$tentang_kami->instagram}}
                   </li>
                   <li>
-                    <i class="fa fa-youtube user-profile-icon"></i> qkohst
+                    <i class="fa fa-youtube user-profile-icon"></i> {{$tentang_kami->youtube}}
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-success btn-md"><i class="fa fa-edit m-right-xs"></i> Edit Data</a>
+                <a href="{{ route('set-tentang.edit', $tentang_kami->id) }}" class="btn btn-success btn-md"><i class="fa fa-edit m-right-xs"></i> Edit Data</a>
               </div>
 
               <div class="col-md-12 mt-4">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae veritatis facere, ipsa odit voluptatibus perferendis architecto neque. Incidunt accusantium maxime cupiditate velit nam adipisci, debitis, iure vel aliquam ipsa sapiente?</p>
+                <p>{{$tentang_kami->deksripsi}}</p>
               </div>
             </div>
           </div>
