@@ -18,6 +18,9 @@
     <h4>{{$data_donasi->count()}} Donasi</h4>
 
     <ul class="comment-list">
+      @if($data_donasi->count() == 0)
+      <p>Belum ditemukan data donasi</p>
+      @else
       @foreach($data_donasi as $donasi)
       <li>
         <div class="comment">
@@ -36,6 +39,7 @@
       </li>
       <hr>
       @endforeach
+      @endif
 
     </ul>
   </div>

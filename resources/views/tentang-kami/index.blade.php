@@ -32,67 +32,18 @@
 </section>
 <!-- About section end -->
 
-
 <!-- Features section -->
 <section class="features-section spad gradient-bg">
   <div class="container text-white">
     <div class="section-title text-center">
       <h2>Partner Kami</h2>
+      <p>Semua institusi, rumah sakit, klinik, perusahaan dan organisasi yang turut bekerja sama untuk Indonesia yang lebih baik</p>
     </div>
     <div class="row">
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-mobile"></i>
-        <div class="feature-content">
-          <h4>Mobile Apps</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
-      </div>
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-shield"></i>
-        <div class="feature-content">
-          <h4>Safe & Secure</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
-      </div>
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-wallet"></i>
-        <div class="feature-content">
-          <h4>Wallet</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
-      </div>
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-headphone-alt"></i>
-        <div class="feature-content">
-          <h4>Experts Support</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
-      </div>
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-reload"></i>
-        <div class="feature-content">
-          <h4>Instant Exchange</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
-      </div>
-      <!-- feature -->
-      <div class="col-md-6 col-lg-4 feature">
-        <i class="ti-panel"></i>
-        <div class="feature-content">
-          <h4>Recuring Buys</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <a href="" class="readmore">Readmore</a>
-        </div>
+      <div class="col-12 text-center">
+        @foreach($data_partner_kami as $partner)
+        <img src="/landing-page-assets/img/partner-kami/{{$partner->logo}}" height="65 px" class="mr-2 mb-4">
+        @endforeach
       </div>
     </div>
   </div>
@@ -100,7 +51,7 @@
 <!-- Features section end -->
 
 <!-- Process section -->
-<section class="process-section spad">
+<section class="process-section spad bg-default">
   <div class="container">
     <div class="section-title text-center">
       <h2>Bagaimana Cara Kami Bekerja</h2>
@@ -255,8 +206,5 @@
   </div>
 </section>
 <!-- Team section -->
-
-
-
 
 @include('layouts.landing-page.footer')

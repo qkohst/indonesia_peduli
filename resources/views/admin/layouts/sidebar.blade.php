@@ -37,7 +37,7 @@
           <li><a><i class="fa fa-building"></i> Tentang Kami <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('set-tentang.index') }}">Tentang Indonesia Peduli</a></li>
-              <li><a href="#">Partner Kerjasama</a></li>
+              <li><a href="{{ route('set-partner.index') }}">Partner Kerjasama</a></li>
               <li><a href="#">Cara Kerja</a></li>
               <li><a href="#">Anggota Tim</a></li>
             </ul>

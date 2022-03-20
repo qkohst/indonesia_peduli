@@ -44,14 +44,19 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);
+            Route::resource('program-donasi', 'Admin\ProgramDonasiController');
+            Route::post('penyaluran-dana', 'Admin\PenyaluranDanaController@store')->name('penyaluran-dana.store');
 
             Route::resource('set-tentang', 'Admin\TentangKamiController',  [
                 'uses' => ['index', 'edit', 'update']
             ]);
-            Route::resource('program-donasi', 'Admin\ProgramDonasiController');
-            Route::post('penyaluran-dana', 'Admin\PenyaluranDanaController@store')->name('penyaluran-dana.store');
+            Route::resource('set-partner', 'Admin\PartnerController',  [
+                'uses' => ['index', 'store', 'destroy']
+            ]);
         });
     });
+
+    // LANJUT PARTNER KAMI 
 
     // Route Member
     Route::group(['middleware' => 'checkRole:2'], function () {
@@ -85,8 +90,5 @@ Route::group(['middleware' => ['auth']], function () {
                 'uses' => ['store', 'destroy']
             ]);
         });
-        
     });
 });
-
-// LANJUT ADMIN TENTANG KAMI && Add Remote Github
