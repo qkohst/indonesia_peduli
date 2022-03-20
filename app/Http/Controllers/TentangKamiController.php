@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CaraKerja;
 use App\PartnerKami;
 use App\TentangKami;
 use Illuminate\Http\Request;
@@ -18,10 +19,12 @@ class TentangKamiController extends Controller
         $title = 'Tentang Kami';
         $tentang_kami = TentangKami::first();
         $data_partner_kami = PartnerKami::all();
+        $data_cara_kerja = CaraKerja::all();
         return view('tentang-kami.index', compact(
             'title',
             'tentang_kami',
-            'data_partner_kami'
+            'data_partner_kami',
+            'data_cara_kerja'
         ));
     }
 

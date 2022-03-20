@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-12 text-center">
         @foreach($data_partner_kami as $partner)
-        <img src="/landing-page-assets/img/partner-kami/{{$partner->logo}}" height="65 px" class="mr-2 mb-4">
+        <img src="landing-page-assets/img/partner-kami/{{$partner->logo}}" height="65 px" class="mr-2 mb-4">
         @endforeach
       </div>
     </div>
@@ -51,39 +51,25 @@
 <!-- Features section end -->
 
 <!-- Process section -->
-<section class="process-section spad bg-default">
+<section class="process-section spad">
   <div class="container">
     <div class="section-title text-center">
       <h2>Bagaimana Cara Kami Bekerja</h2>
     </div>
     <div class="row">
+
+      @foreach($data_cara_kerja as $cara_kerja)
       <div class="col-md-4 process">
         <div class="process-step">
           <figure class="process-icon">
-            <img src="/landing-page-assets/img/process-icons/1.png" alt="#">
+            <img src="landing-page-assets/img/cara-kerja/{{$cara_kerja->icon}}" alt="#" height="65 px">
           </figure>
-          <h4>Create Your Wallet</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+          <h4>{{$cara_kerja->tahap}}</h4>
+          <p>{{$cara_kerja->deskripsi}}</p>
         </div>
       </div>
-      <div class="col-md-4 process">
-        <div class="process-step">
-          <figure class="process-icon">
-            <img src="/landing-page-assets/img/process-icons/2.png" alt="#">
-          </figure>
-          <h4>Create Your Wallet</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-        </div>
-      </div>
-      <div class="col-md-4 process">
-        <div class="process-step">
-          <figure class="process-icon">
-            <img src="/landing-page-assets/img/process-icons/3.png" alt="#">
-          </figure>
-          <h4>Create Your Wallet</h4>
-          <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-        </div>
-      </div>
+      @endforeach
+
     </div>
   </div>
 </section>
@@ -99,6 +85,26 @@
   </div>
   <div class="team-members clearfix">
     <!-- Team member -->
+    <div class="member mb-4">
+      <div class="member-text">
+        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
+        <h2>Tom Binegar</h2>
+        <span>Business Development</span>
+      </div>
+      <div class="member-social">
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+        <a href=""><i class="fa fa-twitter"></i></a>
+      </div>
+      <div class="member-info">
+        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
+        <div class="member-meta">
+          <h2>Tom Binegar</h2>
+          <span>Marketing Director</span>
+        </div>
+        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
+      </div>
+    </div>
     <div class="member">
       <div class="member-text">
         <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>

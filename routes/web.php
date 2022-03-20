@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('set-partner', 'Admin\PartnerController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);
+            Route::resource('set-carakerja', 'Admin\CaraKerjaController',  [
+                'uses' => ['index', 'store', 'destroy']
+            ]);
         });
     });
 

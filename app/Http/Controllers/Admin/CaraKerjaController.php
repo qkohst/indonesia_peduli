@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CaraKerja;
 use App\Http\Controllers\Controller;
-use App\PartnerKami;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PartnerController extends Controller
+class CaraKerjaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $title = 'Partner Kerjasama';
-        $data_partner = PartnerKami::all();
-        return view('admin.partner-kami.index', compact(
+        $title = 'Tahapan Cara Kerja';
+        $data_cara_kerja = CaraKerja::all();
+        return view('admin.cara-kerja.index', compact(
             'title',
-            'data_partner'
+            'data_cara_kerja'
         ));
     }
 
@@ -33,24 +33,24 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|min:3|max:100',
-            'logo' => 'required',
-            'deksripsi' => 'required|max:255',
+            'tahap' => 'required|min:3|max:50',
+            'icon' => 'required',
+            'deskripsi' => 'required|max:255',
         ]);
 
         if ($validator->fails()) {
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         } else {
-            $logo = $request->file('logo');
-            $nama_file = time() . '.' . $logo->getClientOriginalExtension();
-            $logo->move('landing-page-assets/img/partner-kami/', $nama_file);
+            $icon = $request->file('icon');
+            $nama_file = time() . '.' . $icon->getClientOriginalExtension();
+            $icon->move('landing-page-assets/img/cara-kerja/', $nama_file);
 
-            $partner_kami = new PartnerKami([
-                'nama' => $request->nama,
-                'logo' => $nama_file,
-                'deksripsi' => $request->deksripsi,
+            $cara_kerja = new CaraKerja([
+                'tahap' => $request->tahap,
+                'icon' => $nama_file,
+                'deskripsi' => $request->deskripsi,
             ]);
-            $partner_kami->save();
+            $cara_kerja->save();
 
             return back()->with('toast_success', 'Data berhasil disimpan');
         }
@@ -65,11 +65,11 @@ class PartnerController extends Controller
     public function destroy($id)
     {
         try {
-            $partner = PartnerKami::findorfail($id);
-            $partner->delete();
-            return back()->with('toast_success', 'Data partner berhasil dihapus');
+            $cara_kerja = CaraKerja::findorfail($id);
+            $cara_kerja->delete();
+            return back()->with('toast_success', 'Data berhasil dihapus');
         } catch (\Throwable $th) {
-            return back()->with('toast_warning', 'Data partner tidak dapat dihapus');
+            return back()->with('toast_warning', 'Data tidak dapat dihapus');
         }
     }
 }
