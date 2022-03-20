@@ -39,7 +39,7 @@
               <li><a href="{{ route('set-tentang.index') }}">Tentang Indonesia Peduli</a></li>
               <li><a href="{{ route('set-partner.index') }}">Partner Kerjasama</a></li>
               <li><a href="{{ route('set-carakerja.index') }}">Cara Kerja</a></li>
-              <li><a href="#">Anggota Tim</a></li>
+              <li><a href="{{ route('set-anggotatim.index') }}">Anggota Tim</a></li>
             </ul>
           </li>
           <!-- <li><a href="#"><i class="fa fa-user-md"></i> Kontak Kami</a></li> -->

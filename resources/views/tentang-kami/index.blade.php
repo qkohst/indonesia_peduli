@@ -71,9 +71,25 @@
       @endforeach
 
     </div>
+    <!-- Newsletter section end -->
   </div>
 </section>
 <!-- Process section end -->
+
+<!-- Newsletter section -->
+<section class="newsletter-section gradient-bg">
+  <div class="container text-white">
+    <div class="row">
+      <div class="col-lg-8 newsletter-text">
+        <h2>Transparansi Penyaluran Dana</h2>
+        <p>Kami mempublikasikan setiap transaksi dan distribusi penyaluran dana.</p>
+      </div>
+      <div class="col-lg-4 col-md-8 offset-lg-0 offset-md-2">
+        <a href="{{ route('home.transparansi') }}" class="site-btn sb-gradients sbg-line btn-block mt-3">Lihat Transparansi</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Team section -->
 <section class="team-section spad">
@@ -85,130 +101,23 @@
   </div>
   <div class="team-members clearfix">
     <!-- Team member -->
+    @foreach($data_anggota_tim as $anggota_tim)
     <div class="member mb-4">
       <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
-        <h2>Tom Binegar</h2>
-        <span>Business Development</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
+        <div class="member-img set-bg" data-setbg="landing-page-assets/img/anggota-tim/{{$anggota_tim->foto}}"></div>
+        <h2>{{$anggota_tim->nama_lengkap}}</h2>
+        <span>{{$anggota_tim->jabatan}}</span>
       </div>
       <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
+        <div class="member-img mf set-bg" data-setbg="landing-page-assets/img/anggota-tim/{{$anggota_tim->foto}}"></div>
         <div class="member-meta">
-          <h2>Tom Binegar</h2>
-          <span>Marketing Director</span>
+          <h2>{{$anggota_tim->nama_lengkap}}</h2>
+          <span>{{$anggota_tim->jabatan}}</span>
         </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
+        <p>{{$anggota_tim->uraian_tugas}}</p>
       </div>
     </div>
-    <div class="member">
-      <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
-        <h2>Tom Binegar</h2>
-        <span>Business Development</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
-      </div>
-      <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/1.jpg"></div>
-        <div class="member-meta">
-          <h2>Tom Binegar</h2>
-          <span>Marketing Director</span>
-        </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
-      </div>
-    </div>
-    <!-- Team member -->
-    <div class="member">
-      <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/2.jpg"></div>
-        <h2>Jackson Nash</h2>
-        <span>Business Development</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
-      </div>
-      <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/2.jpg"></div>
-        <div class="member-meta">
-          <h2>Jackson Nash</h2>
-          <span>Marketing Director</span>
-        </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
-      </div>
-    </div>
-    <!-- Team member -->
-    <div class="member">
-      <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/3.jpg"></div>
-        <h2>Tom Binegar</h2>
-        <span>Business Development</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
-      </div>
-      <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/3.jpg"></div>
-        <div class="member-meta">
-          <h2>Aaron Ballance</h2>
-          <span>Ceo Bitcoin</span>
-        </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
-      </div>
-    </div>
-    <!-- Team member -->
-    <div class="member">
-      <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/4.jpg"></div>
-        <h2>Melissa Barth</h2>
-        <span>Product Manager</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
-      </div>
-      <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/4.jpg"></div>
-        <div class="member-meta">
-          <h2>Melissa Barth</h2>
-          <span>Product Manager</span>
-        </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
-      </div>
-    </div>
-    <!-- Team member -->
-    <div class="member">
-      <div class="member-text">
-        <div class="member-img set-bg" data-setbg="/landing-page-assets/img/member/5.jpg"></div>
-        <h2>Katy Abrams</h2>
-        <span>Head of Design</span>
-      </div>
-      <div class="member-social">
-        <a href=""><i class="fa fa-facebook"></i></a>
-        <a href=""><i class="fa fa-linkedin"></i></a>
-        <a href=""><i class="fa fa-twitter"></i></a>
-      </div>
-      <div class="member-info">
-        <div class="member-img mf set-bg" data-setbg="/landing-page-assets/img/member/5.jpg"></div>
-        <div class="member-meta">
-          <h2>Katy Abrams</h2>
-          <span>Head of Design</span>
-        </div>
-        <p>Jackson Nash is a full-time faculty member of the Marketing and Behavioural Science Division at the Sauder School of Business at UBC. He leads the Entrepreneurship Group, in the undergraduate and graduate programs, teaching actively in both of these.</p>
-      </div>
-    </div>
+    @endforeach
   </div>
 </section>
 <!-- Team section -->

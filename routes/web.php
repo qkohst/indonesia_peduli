@@ -56,6 +56,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('set-carakerja', 'Admin\CaraKerjaController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);
+            Route::resource('set-anggotatim', 'Admin\AnggotaTimController',  [
+                'uses' => ['index', 'store', 'destroy']
+            ]);
         });
     });
 
