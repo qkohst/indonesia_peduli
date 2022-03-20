@@ -42,7 +42,7 @@
               <li><a href="{{ route('set-anggotatim.index') }}">Anggota Tim</a></li>
             </ul>
           </li>
-          <!-- <li><a href="#"><i class="fa fa-user-md"></i> Kontak Kami</a></li> -->
+          <li><a href="{{ route('set-faq.index') }}"><i class="fa fa-question-circle-o"></i> FAQ</a></li>
 
         </ul>
       </div>

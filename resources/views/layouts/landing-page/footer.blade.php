@@ -6,7 +6,7 @@
 					<img src="/landing-page-assets/img/logo.png" class="mb-4" alt="">
 					<p>{{session()->get('deskripsi_footer')}}</p>
 					<span>
-					{{session()->get('alamat')}} <a href="#" target="_blank">{{session()->get('email')}}</a>
+						{{session()->get('alamat')}} <a href="#" target="_blank">{{session()->get('email')}}</a>
 					</span>
 				</div>
 
@@ -17,7 +17,7 @@
 						<li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
 						<li><a href="{{ route('home.transparansi') }}">Transparansi</a></li>
 						<li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
-						<li><a href="#">Kontak Kami</a></li>
+						<li><a href="{{ route('home.faq') }}">FAQ</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-3 footer-widget">
@@ -39,8 +39,8 @@
 					</div>
 					<div class="col-lg-8 text-center text-lg-right">
 						<ul class="footer-nav">
-							<li><a href="">Terms of Use</a></li>
-							<li><a href="">Privacy Policy </a></li>
+							<!-- <li><a href="">Terms of Use</a></li>
+							<li><a href="">Privacy Policy </a></li> -->
 							<li>
 								<a href="">
 									Copyright &copy;<script>
@@ -61,6 +61,7 @@
 	<script src="/landing-page-assets/js/bootstrap.js"></script>
 	<script src="/landing-page-assets/js/jquery-3.2.1.min.js"></script>
 	<script src="/landing-page-assets/js/owl.carousel.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="/landing-page-assets/js/main.js"></script>
 
 	</body>

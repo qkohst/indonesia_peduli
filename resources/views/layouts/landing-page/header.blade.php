@@ -46,7 +46,7 @@
           <li><a href="{{ route('donasi-saya.index') }}">Donasi Saya</a></li>
           <li><a href="{{ route('home.transparansi') }}">Transparansi</a></li>
           <li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
-          <li><a href="#">Kontak Kami</a></li>
+          <li><a href="{{ route('home.faq') }}">FAQ</a></li>
           @if (Auth::check())
           <li><a href="{{ route('member.profile') }}"><i class="fa fa-user"></i> {{Auth::user()->nama_lengkap}}</a></li>
           @else

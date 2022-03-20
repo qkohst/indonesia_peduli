@@ -24,6 +24,7 @@ Route::get('/program', 'LandingPageController@all')->name('home.all');
 Route::get('/program/{id}', 'LandingPageController@show')->name('home.show');
 Route::get('/program/kategori/{id}', 'LandingPageController@kategori')->name('home.kategori');
 Route::get('/transparansi', 'LandingPageController@transparansi')->name('home.transparansi');
+Route::get('/faq', 'LandingPageController@faq')->name('home.faq');
 
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
 
@@ -57,6 +58,9 @@ Route::group(['middleware' => ['auth']], function () {
                 'uses' => ['index', 'store', 'destroy']
             ]);
             Route::resource('set-anggotatim', 'Admin\AnggotaTimController',  [
+                'uses' => ['index', 'store', 'destroy']
+            ]);
+            Route::resource('set-faq', 'Admin\PertanyaanController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);
         });

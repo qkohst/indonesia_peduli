@@ -10,6 +10,7 @@ use App\LikeBalasKomentar;
 use App\LikeKomentar;
 use App\LikeProgramDonasi;
 use App\PenyaluranDana;
+use App\Pertanyaan;
 use App\ProgramDonasi;
 use App\TentangKami;
 use Illuminate\Http\Request;
@@ -208,6 +209,16 @@ class LandingPageController extends Controller
         return view('landing-page.transparansi', compact(
             'title',
             'data_penyaluran_dana'
+        ));
+    }
+
+    public function faq()
+    {
+        $title = 'Frequently Asked Question';
+        $data_pertanyaan = Pertanyaan::all();
+        return view('landing-page.faq', compact(
+            'title',
+            'data_pertanyaan'
         ));
     }
 }

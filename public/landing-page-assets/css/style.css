@@ -1460,6 +1460,54 @@ ol {
 	        box-shadow: 0px 23px 49px rgba(33, 54, 61, 0.15);
 }
 
+/*--------------------------------------------------------------
+# Frequently Asked Questions
+--------------------------------------------------------------*/
+.faq {
+	padding: 60px 0;
+  }
+  
+  .faq .faq-list {
+	padding: 0;
+	list-style: none;
+  }
+  
+  .faq .faq-list li {
+	padding: 0 0 20px 25px;
+  }
+  
+  .faq .faq-list a {
+	display: block;
+	position: relative;
+	font-family: #009cea;
+	font-size: 18px;
+	font-weight: 500;
+  }
+  
+  .faq .faq-list i {
+	font-size: 18px;
+	position: absolute;
+	left: -25px;
+	top: 6px;
+  }
+  
+  .faq .faq-list p {
+	margin-bottom: 20px;
+	font-size: 15px;
+  }
+  
+  .faq .faq-list a.collapse {
+	color: #009cea;
+  }
+  
+  .faq .faq-list a.collapsed {
+	color: #343a40;
+  }
+  
+  .faq .faq-list a.collapsed:hover {
+	color: #009cea;
+  }
+  
 /*------------------
 	Responsive
 ---------------------*/
