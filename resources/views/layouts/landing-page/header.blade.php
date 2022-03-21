@@ -48,7 +48,7 @@
           <li><a href="{{ route('tentang-kami.index') }}">Tentang Kami</a></li>
           <li><a href="{{ route('home.faq') }}">FAQ</a></li>
           @if (Auth::check())
-          <li><a href="{{ route('member.profile') }}"><i class="fa fa-user"></i> {{Auth::user()->nama_lengkap}}</a></li>
+          <li><a href="{{ route('member.profile.index') }}"><i class="fa fa-user"></i> {{Auth::user()->nama_lengkap}}</a></li>
           @else
           <li><a href="{{ route('login') }}">Masuk</a></li>
           @endif

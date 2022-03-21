@@ -15,19 +15,20 @@
 <!-- About section -->
 <section class="about-section spad">
   <div class="container">
+    <div class="about-img">
+      <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="">
+    </div>
     <div class="row">
       <div class="col-lg-6 offset-lg-6 about-text">
         <h2>Tentang Indonesia Peduli</h2>
         <h5>{{$tentang_kami->deksripsi_singkat}}</h5>
         <p>{{$tentang_kami->deksripsi}}</p>
         @if (is_null(Auth::user()))
-        <a href="{{ route('register') }}" class="site-btn sb-gradients sbg-line mt-5">Bergabung Sekarang</a>
+        <a href="{{ route('register') }}" class="site-btn sb-gradients sbg-line btn-block mt-5">Bergabung Sekarang</a>
         @endif
       </div>
     </div>
-    <div class="about-img">
-      <img src="/landing-page-assets/img/{{$tentang_kami->gambar_utama}}" alt="">
-    </div>
+
   </div>
 </section>
 <!-- About section end -->

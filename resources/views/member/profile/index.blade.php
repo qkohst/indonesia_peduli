@@ -16,17 +16,41 @@
 <section class="about-section spad">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 offset-lg-1">
-        <div class="about-img">
-          <img src="/avatar/{{Auth::user()->avatar}}" alt="Avatar" width="350px">
+      <div class="col-md-3">
+        <div class="widget-area">
+          <div class="widget">
+            <h4 class="widget-title">{{$title}}</h4>
+            <ul>
+              <li><a href="{{ route('member.profile.edit') }}">Edit Profile</a></li>
+              <li><a href="{{ route('member.profile.password') }}">Ganti Password</a></li>
+              <li><a href="{{ route('logout') }}">Keluar/Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="col-lg-8 offset-lg-4 about-text">
-        <h2>{{Auth::user()->nama_lengkap}}</h2>
-        <h5>Bitcoin is an innovative payment network and a new kind of money.</h5>
-        <p>Bitcoin is one of the most important inventions in all of human history. For the first time ever, anyone can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without restriction. It’s the dawn of a better, more free world.</p>
-        <a href="" class="site-btn sb-gradients mt-2 mr-3">Edit Profile</a>
-        <a href="{{ route('logout') }}" class="site-btn sbg-line mt-2">Keluar/Logout</a>
+      <div class="col-md-9">
+        <div class="widget-area">
+          <div class="row">
+            <div class="col-lg-3 offset-lg-2">
+              <div class="about-img">
+                <img src="/avatar/{{Auth::user()->avatar}}" alt="Avatar" width="250 px">
+              </div>
+            </div>
+            <div class="col-lg-9 offset-lg-5 about-text">
+              <h2 class="my-1">{{Auth::user()->nama_lengkap}}</h2>
+              <h5 class="mt-1 mb-4">{{Auth::user()->email}}</h5>
+              <p class="my-1">Nomor HP : {{Auth::user()->nomor_hp}}</p>
+              <p class="my-1">Jenis Kelamin :
+                @if (Auth::user()->jenis_kelamin == 'L')
+                Laki-Laki
+                @else
+                Perempuan
+                @endif
+              </p>
+              <a href="{{ route('logout') }}" class="site-btn sb-gradients mt-2">Keluar/Logout</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

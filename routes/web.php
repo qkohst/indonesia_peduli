@@ -66,12 +66,16 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    // LANJUT PARTNER KAMI 
+    // LANJUT Edit Profile
 
     // Route Member
     Route::group(['middleware' => 'checkRole:2'], function () {
         Route::group(['prefix' => 'member'], function () {
-            Route::get('profile', 'Member\ProfileController@index')->name('member.profile');
+            Route::get('profile', 'Member\ProfileController@index')->name('member.profile.index');
+            Route::get('profile/edit', 'Member\ProfileController@edit')->name('member.profile.edit');
+            Route::post('profile/update', 'Member\ProfileController@update')->name('member.profile.update');
+            Route::get('profile/password', 'Member\ProfileController@password')->name('member.profile.password');
+            Route::post('profile/update_password', 'Member\ProfileController@update_password')->name('member.profile.update_password');
 
             Route::resource('donasi', 'Member\DonasiController',  [
                 'uses' => ['show', 'store']
