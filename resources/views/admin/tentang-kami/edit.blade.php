@@ -103,8 +103,8 @@
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="col-md-6 col-sm-6 offset-md-2">
-                                        <a href="{{ route('set-tentang.index') }}" class="btn btn-danger">Batal</a>
                                         <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="{{ route('set-tentang.index') }}" class="btn btn-danger">Batal</a>
                                     </div>
                                 </div>
 

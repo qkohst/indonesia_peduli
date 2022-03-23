@@ -42,6 +42,12 @@ Route::group(['middleware' => ['auth']], function () {
     // Route Admin
     Route::group(['middleware' => 'checkRole:1'], function () {
         Route::group(['prefix' => 'admin'], function () {
+            Route::get('profile', 'Admin\ProfileController@index')->name('admin.profile.index');
+            Route::get('profile/edit', 'Admin\ProfileController@edit')->name('admin.profile.edit');
+            Route::post('profile/update', 'Admin\ProfileController@update')->name('admin.profile.update');
+            Route::get('profile/password', 'Admin\ProfileController@password')->name('admin.profile.password');
+            Route::post('profile/update_password', 'Admin\ProfileController@update_password')->name('admin.profile.update_password');
+
             Route::resource('kategori-donasi', 'Admin\KategoriDonasiController',  [
                 'uses' => ['index', 'store', 'destroy']
             ]);

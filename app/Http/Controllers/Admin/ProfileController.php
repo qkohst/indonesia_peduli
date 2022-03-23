@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -13,8 +13,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $title = 'Profile';
-        return view('member.profile.index', compact(
+        $title = 'User Profile';
+        return view('admin.profile.index', compact(
             'title',
         ));
     }
@@ -23,7 +23,7 @@ class ProfileController extends Controller
     {
         $profile = User::findorfail(Auth::user()->id);
         $title = 'Edit Profile';
-        return view('member.profile.edit', compact(
+        return view('admin.profile.edit', compact(
             'title',
             'profile'
         ));
@@ -61,14 +61,14 @@ class ProfileController extends Controller
                 ];
             }
             $profile->update($data);
-            return redirect('member/profile')->with('toast_success', 'Profile berhasil diedit');
+            return redirect('admin/profile')->with('toast_success', 'Profile berhasil diedit');
         }
     }
 
     public function password()
     {
         $title = 'Ganti Password';
-        return view('member.profile.password', compact(
+        return view('admin.profile.password', compact(
             'title',
         ));
     }
@@ -90,7 +90,7 @@ class ProfileController extends Controller
                     'password' => Hash::make($request->password_baru)
                 ])->save();
 
-                return redirect('member/profile')->with('toast_success', 'Password berhasil diganti');
+                return redirect('admin/profile')->with('toast_success', 'Password berhasil diganti');
             } else {
                 return back()->with('toast_error', 'Password lama tidak sesuai');
             }
