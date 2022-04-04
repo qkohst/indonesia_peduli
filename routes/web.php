@@ -27,13 +27,13 @@ Route::get('/transparansi', 'LandingPageController@transparansi')->name('home.tr
 Route::get('/faq', 'LandingPageController@faq')->name('home.faq');
 
 Route::get('komentar/{id}', 'Member\KomentarController@show')->name('komentar.show');
+Route::get('tentang-kami', 'TentangKamiController@index')->name('tentang-kami.index');
 
 Route::get('auth/login', 'AuthController@view_login')->name('login');
 Route::post('auth/login', 'AuthController@post_login')->name('login');
 Route::get('auth/register', 'AuthController@view_register')->name('register');
 Route::post('auth/register', 'AuthController@post_register')->name('register');
 
-Route::get('tentang-kami', 'TentangKamiController@index')->name('tentang-kami.index');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('auth/logout', 'AuthController@logout')->name('logout');

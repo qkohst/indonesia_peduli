@@ -21,20 +21,20 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = 'Home';
-        $tantang_kami = TentangKami::first();
+        $tentang_kami = TentangKami::first();
         session([
-            'deskripsi_footer' => $tantang_kami->deksripsi_footer,
-            'alamat' => $tantang_kami->alamat,
-            'email' => $tantang_kami->email,
-            'email' => $tantang_kami->email,
-            'nomor_hp' => $tantang_kami->nomor_hp,
-            'facebook' => $tantang_kami->facebook,
-            'twitter' => $tantang_kami->twitter,
-            'instagram' => $tantang_kami->instagram,
-            'youtube' => $tantang_kami->youtube,
+            'deskripsi_footer' => $tentang_kami->deksripsi_footer,
+            'alamat' => $tentang_kami->alamat,
+            'email' => $tentang_kami->email,
+            'email' => $tentang_kami->email,
+            'nomor_hp' => $tentang_kami->nomor_hp,
+            'facebook' => $tentang_kami->facebook,
+            'twitter' => $tentang_kami->twitter,
+            'instagram' => $tentang_kami->instagram,
+            'youtube' => $tentang_kami->youtube,
         ]);
 
-        $data_program_donasi_utama = ProgramDonasi::where('kategori_donasi_id', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->get();
+        $data_program_donasi_utama = ProgramDonasi::where('kategori_donasi_id', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
 
         $data_program_donasi_mendesak_id = ProgramDonasi::where('kategori_donasi_id', '!=', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get('id');
         $data_program_donasi_mendesak = ProgramDonasi::where('kategori_donasi_id', '!=', '1')->where('batas_akhir_donasi', '>=', now())->orderBy('batas_akhir_donasi', 'ASC')->limit(3)->get();
