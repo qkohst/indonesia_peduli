@@ -10,7 +10,7 @@ class KomentarTest extends TestCase
 {
     /**
      * @test
-     * Assert an user can view all comment page
+     * Assert an user can view page all comment
      *
      * @return void
      */
@@ -20,4 +20,6 @@ class KomentarTest extends TestCase
             ->assertStatus(200)
             ->assertViewIs('landing-page.semua-komentar');
     }
+
+    // KURANG POST KOMENTAR
 }

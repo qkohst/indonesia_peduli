@@ -10,7 +10,7 @@ class TentangKamiTest extends TestCase
 {
     /**
      * @test
-     * Assert an user can view tentang kami page
+     * Assert an user can view page tentang kami 
      *
      * @return void
      */

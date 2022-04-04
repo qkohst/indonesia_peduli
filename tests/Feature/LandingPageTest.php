@@ -10,7 +10,7 @@ class LandingPageTest extends TestCase
 {
     /**
      * @test
-     * Assert an user can view home page 
+     * Assert an user can view page home  
      *
      * @return void
      */
@@ -23,7 +23,7 @@ class LandingPageTest extends TestCase
 
     /**
      * @test
-     * Assert an user can view all program page
+     * Assert an user can view page all program 
      *
      * @return void
      */
@@ -36,7 +36,7 @@ class LandingPageTest extends TestCase
 
     /**
      * @test
-     * Assert an user can view detail program page
+     * Assert an user can view page detail program 
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class LandingPageTest extends TestCase
 
     /**
      * @test
-     * Assert an user can view detail program page
+     * Assert an user can view page detail program 
      *
      * @return void
      */
@@ -62,7 +62,7 @@ class LandingPageTest extends TestCase
 
     /**
      * @test
-     * Assert an user can view transparansi page
+     * Assert an user can view page transparansi 
      *
      * @return void
      */
@@ -75,7 +75,7 @@ class LandingPageTest extends TestCase
 
     /**
      * @test
-     * Assert an user can view faq page
+     * Assert an user can view page faq 
      *
      * @return void
      */
