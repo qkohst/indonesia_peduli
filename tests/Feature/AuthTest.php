@@ -13,7 +13,7 @@ class AuthTest extends TestCase
     // use RefreshDatabase;
     /** @test  */
 
-    public function ShowPageLogin()
+    public function AnyoneCanShowPageLogin()
     {
         $response = $this->get('auth/login')
             ->assertStatus(200)
@@ -23,7 +23,7 @@ class AuthTest extends TestCase
 
     /** @test  */
 
-    public function ShowPageRegister()
+    public function AnyoneCanShowPageRegister()
     {
         $response = $this->get('auth/register')
             ->assertStatus(200)
@@ -36,13 +36,13 @@ class AuthTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $response = $this->post('auth/register', [
-            'nama_lengkap' => 'Kukoh Saantoso',
+            'nama_lengkap' => 'Kukoh Santoso',
             'jenis_kelamin' => 'L',
             'email' => 'kukohsantoso013@gmail.com',
             'nomor_hp' => '085326532545',
             'password' => '123456',
             'konfirmasi_password' => '123456',
-        ]);
-        $response->assertRedirect('auth/login');
+        ])
+        ->assertRedirect(RouteServiceProvider::LOGIN);
     }
 }

@@ -10,7 +10,7 @@ class LandingPageTest extends TestCase
 {
     /** @test  */
 
-    public function ShowPageHome()
+    public function AnyoneCanShowPageHome()
     {
         $response = $this->get('/')
             ->assertStatus(200)
@@ -19,7 +19,7 @@ class LandingPageTest extends TestCase
 
     /** @test  */
 
-    public function ShowPageAllProgram()
+    public function AnyoneCanShowPageAllProgram()
     {
         $response = $this->get('/program')
             ->assertStatus(200)
@@ -28,7 +28,7 @@ class LandingPageTest extends TestCase
 
     /** @test  */
 
-    public function ShowPageDetailProgram()
+    public function AnyoneCanShowPageDetailProgram()
     {
         $response = $this->get('/program/21')
             ->assertStatus(200)
@@ -37,7 +37,7 @@ class LandingPageTest extends TestCase
 
     /** @test  */
 
-    public function ShowPageProgramByKategori()
+    public function AnyoneCanShowPageProgramByKategori()
     {
         $response = $this->get('/program/kategori/1')
             ->assertStatus(200)
@@ -46,7 +46,7 @@ class LandingPageTest extends TestCase
 
     /** @test  */
 
-    public function ShowPageTransparansi()
+    public function AnyoneCanShowPageTransparansi()
     {
         $response = $this->get('/transparansi')
             ->assertStatus(200)
@@ -54,8 +54,8 @@ class LandingPageTest extends TestCase
     }
 
     /** @test  */
-    
-    public function ShowPageFaq()
+
+    public function AnyoneCanShowPageFaq()
     {
         $response = $this->get('/faq')
             ->assertStatus(200)

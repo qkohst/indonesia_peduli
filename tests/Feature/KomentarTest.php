@@ -9,8 +9,8 @@ use Tests\TestCase;
 class KomentarTest extends TestCase
 {
     /** @test  */
-    
-    public function ShowPageAllKomentar()
+
+    public function AnyoneCanShowPageAllKomentar()
     {
         $response = $this->get('komentar/21')
             ->assertStatus(200)
