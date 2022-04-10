@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
-    // use RefreshDatabase;
     /** @test  */
 
     public function AnyoneCanShowPageLogin()
@@ -20,6 +19,60 @@ class AuthTest extends TestCase
             ->assertViewIs('auth.login');
     }
 
+    /** @test  */
+
+    public function UserCanBeAuthenticatedUsingHisCredentials()
+    {
+        $user = User::where('role', 2)->first();
+
+        $response = $this->post('auth/login', [
+            'email' => $user->email,
+            'password' => '123456'
+        ])
+            ->assertStatus(302)
+            ->assertRedirect(route('dashboard'));
+
+        $this->assertAuthenticated();
+    }
+
+    /** @test  */
+
+    public function AdminCanBeAuthenticatedUsingHisCredentials()
+    {
+        $user = User::where('role', 1)->first();
+
+        $response = $this->post('auth/login', [
+            'email' => $user->email,
+            'password' => '123456'
+        ])
+            ->assertStatus(302)
+            ->assertRedirect(route('dashboard'));
+        $this->assertAuthenticated();
+    }
+
+    /** @test  */
+
+    public function UserMayNotLoggedinWithWrongCredentials()
+    {
+        $user = User::where('role', 2)->first();
+        $response = $this->post('auth/login', [
+            'email' => $user->email,
+            'password' => 'password'
+        ])
+            ->assertStatus(302)
+            ->assertSessionHas('toast_error');
+        $this->assertGuest();
+    }
+
+    /** @test  */
+
+    public function UserMayNotLoggedinWithoutCredentials()
+    {
+        $response = $this->post('auth/login', [])
+            ->assertStatus(302)
+            ->assertSessionHas('toast_error');
+        $this->assertGuest();
+    }
 
     /** @test  */
 
@@ -32,17 +85,47 @@ class AuthTest extends TestCase
 
     /** @test */
 
-    public function UserCanRegistered()
+    public function AnyoneCanRegistered()
     {
-        $this->withoutExceptionHandling();
+        $count_user = User::count();
+
         $response = $this->post('auth/register', [
-            'nama_lengkap' => 'Kukoh Santoso',
+            'nama_lengkap' => 'User ' . ($count_user + 1),
             'jenis_kelamin' => 'L',
-            'email' => 'kukohsantoso013@gmail.com',
-            'nomor_hp' => '085326532545',
+            'email' => 'memberpeduli' . ($count_user + 1) . '@gmail.com',
+            'nomor_hp' => '0853265325' . ($count_user + 1),
             'password' => '123456',
             'konfirmasi_password' => '123456',
         ])
-        ->assertRedirect(RouteServiceProvider::LOGIN);
+            ->assertRedirect(route('login'));
+    }
+
+    /** @test */
+
+    public function UserRegistrastionFailed()
+    {
+        $response = $this->post('auth/register', [
+            'nama_lengkap' => 'User',
+            'jenis_kelamin' => 'L',
+            'email' => 'user@gmail.com',
+            'nomor_hp' => '085123655654',
+            'password' => '123456',
+            'konfirmasi_password' => '0123456',
+        ])
+            ->assertStatus(302)
+            ->assertSessionHas('toast_error');
+    }
+
+    /** @test */
+
+    public function UserLoggedinCanBeLogout()
+    {
+        $user = User::where('role', 2)->first();
+        $this->actingAs($user);
+
+        $this->get('auth/logout')
+            ->assertSessionHas('toast_success')
+            ->assertStatus(302)
+            ->assertRedirect(route('home'));
     }
 }
