@@ -39,7 +39,7 @@ class AuthTest extends TestCase
     //         'email' => $user->email,
     //         'password' => 'password'
     //     ]);
-    //     $this->assertAuthenticated();
+    //     $this->assertAuthenticated();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
     //     $response->assertRedirect('dashboard');
     // }

@@ -14,9 +14,9 @@ class KomentarTest extends TestCase
      *
      * @return void
      */
-    public function testShowPageAllKomentar()
+    public function ShowPageAllKomentar()
     {
-        $response = $this->get('komentar/1')
+        $response = $this->get('komentar/21')
             ->assertStatus(200)
             ->assertViewIs('landing-page.semua-komentar');
     }

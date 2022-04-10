@@ -14,7 +14,7 @@ class LandingPageTest extends TestCase
      *
      * @return void
      */
-    public function testShowPageHome()
+    public function ShowPageHome()
     {
         $response = $this->get('/')
             ->assertStatus(200)
@@ -27,7 +27,7 @@ class LandingPageTest extends TestCase
      *
      * @return void
      */
-    public function testShowPageAllProgram()
+    public function ShowPageAllProgram()
     {
         $response = $this->get('/program')
             ->assertStatus(200)
@@ -40,9 +40,9 @@ class LandingPageTest extends TestCase
      *
      * @return void
      */
-    public function testShowPageDetailProgram()
+    public function ShowPageDetailProgram()
     {
-        $response = $this->get('/program/1')
+        $response = $this->get('/program/21')
             ->assertStatus(200)
             ->assertViewIs('landing-page.show');
     }
