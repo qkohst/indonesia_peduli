@@ -8,12 +8,8 @@ use Tests\TestCase;
 
 class KomentarTest extends TestCase
 {
-    /**
-     * @test
-     * Assert an user can view page all comment
-     *
-     * @return void
-     */
+    /** @test  */
+    
     public function ShowPageAllKomentar()
     {
         $response = $this->get('komentar/21')

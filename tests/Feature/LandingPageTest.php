@@ -8,12 +8,8 @@ use Tests\TestCase;
 
 class LandingPageTest extends TestCase
 {
-    /**
-     * @test
-     * Assert an user can view page home  
-     *
-     * @return void
-     */
+    /** @test  */
+
     public function ShowPageHome()
     {
         $response = $this->get('/')
@@ -21,12 +17,8 @@ class LandingPageTest extends TestCase
             ->assertViewIs('landing-page.home');
     }
 
-    /**
-     * @test
-     * Assert an user can view page all program 
-     *
-     * @return void
-     */
+    /** @test  */
+
     public function ShowPageAllProgram()
     {
         $response = $this->get('/program')
@@ -34,12 +26,8 @@ class LandingPageTest extends TestCase
             ->assertViewIs('landing-page.semua-program');
     }
 
-    /**
-     * @test
-     * Assert an user can view page detail program 
-     *
-     * @return void
-     */
+    /** @test  */
+
     public function ShowPageDetailProgram()
     {
         $response = $this->get('/program/21')
@@ -47,39 +35,27 @@ class LandingPageTest extends TestCase
             ->assertViewIs('landing-page.show');
     }
 
-    /**
-     * @test
-     * Assert an user can view page detail program 
-     *
-     * @return void
-     */
-    public function testShowPageProgramByKategori()
+    /** @test  */
+
+    public function ShowPageProgramByKategori()
     {
         $response = $this->get('/program/kategori/1')
             ->assertStatus(200)
             ->assertViewIs('landing-page.by-kategori');
     }
 
-    /**
-     * @test
-     * Assert an user can view page transparansi 
-     *
-     * @return void
-     */
-    public function testShowPageTransparansi()
+    /** @test  */
+
+    public function ShowPageTransparansi()
     {
         $response = $this->get('/transparansi')
             ->assertStatus(200)
             ->assertViewIs('landing-page.transparansi');
     }
 
-    /**
-     * @test
-     * Assert an user can view page faq 
-     *
-     * @return void
-     */
-    public function testShowPageFaq()
+    /** @test  */
+    
+    public function ShowPageFaq()
     {
         $response = $this->get('/faq')
             ->assertStatus(200)

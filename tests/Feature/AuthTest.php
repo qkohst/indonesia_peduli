@@ -11,49 +11,38 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     // use RefreshDatabase;
-    /**
-     * @test
-     * Assert an user can view page login
-     *
-     * @return void
-     */
-    public function testShowPageLogin()
+    /** @test  */
+
+    public function ShowPageLogin()
     {
         $response = $this->get('auth/login')
             ->assertStatus(200)
             ->assertViewIs('auth.login');
     }
 
-    /**
-     * @test
-     * Assert an user can login & redirect to dashboard
-     *
-     * @return void
-     */
-    // public function testPostLogin()
-    // {
 
-    //     $user = User::factory()->create();
+    /** @test  */
 
-    //     $response = $this->post('auth/login', [
-    //         'email' => $user->email,
-    //         'password' => 'password'
-    //     ]);
-    //     $this->assertAuthenticated();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-
-    //     $response->assertRedirect('dashboard');
-    // }
-
-    /**
-     * @test
-     * Assert an user can view page register
-     *
-     * @return void
-     */
-    public function testShowPageRegister()
+    public function ShowPageRegister()
     {
         $response = $this->get('auth/register')
             ->assertStatus(200)
             ->assertViewIs('auth.register');
+    }
+
+    /** @test */
+
+    public function UserCanRegistered()
+    {
+        $this->withoutExceptionHandling();
+        $response = $this->post('auth/register', [
+            'nama_lengkap' => 'Kukoh Saantoso',
+            'jenis_kelamin' => 'L',
+            'email' => 'kukohsantoso013@gmail.com',
+            'nomor_hp' => '085326532545',
+            'password' => '123456',
+            'konfirmasi_password' => '123456',
+        ]);
+        $response->assertRedirect('auth/login');
     }
 }
