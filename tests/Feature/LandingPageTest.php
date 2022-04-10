@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\KategoriDonasi;
+use App\ProgramDonasi;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -30,16 +32,20 @@ class LandingPageTest extends TestCase
 
     public function AnyoneCanShowPageDetailProgram()
     {
-        $response = $this->get('/program/21')
+        $program = ProgramDonasi::first();
+
+        $response = $this->get('program/' . $program->id)
             ->assertStatus(200)
             ->assertViewIs('landing-page.show');
+        $this->withoutExceptionHandling();
     }
 
     /** @test  */
 
     public function AnyoneCanShowPageProgramByKategori()
     {
-        $response = $this->get('/program/kategori/1')
+        $kategori = KategoriDonasi::first();
+        $response = $this->get('/program/kategori/' . $kategori->id)
             ->assertStatus(200)
             ->assertViewIs('landing-page.by-kategori');
     }
