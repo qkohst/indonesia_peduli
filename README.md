@@ -1,3 +1,71 @@
+<div id="top"></div>
+
+# Indonesia Peduli 
+<p>
+Indonesia Peduli is a website that was built specifically to raise aid funds / donations online.
+Built with laravel 7.x and integrated with online payments.
+</p>
+
+## Installation 
+To run the application on your computer, please follow the following command : 
+
+1. Clone the repo
+   ```sh
+   $ git clone https://github.com/qkohst/indonesia_peduli.git
+   ```
+2. Change directory in project which already clone
+   ```sh
+   $ cd indonesia_peduli
+   ```
+3. Install Composer packages
+   ```sh
+   $ composer install
+   ```
+4. Create database on your computer
+5. Create a copy of your .env file 
+   ```sh
+   $ cp .env.example .env
+   ```
+6. In the .env file, add database information to allow Laravel to connect to the database
+   ```sh
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE={database-name}
+   DB_USERNAME={username-database}
+   DB_PASSWORD={password-database}
+   ```
+7. Generate an app encryption key
+   ```sh
+   $ php artisan key:generate
+   ```
+8. Import ``indonesia_peduli.sql`` or run the following two commands :  
+   a. Migrate the database
+      ```sh
+      $ php artisan migrate
+      ```
+   b. Seed the database
+      ```sh
+      $ php artisan db:seed
+      ```
+9. Running project
+    ```sh
+    $ php artisan serve
+    ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Credential in Seeder
+Admin
+> Username : indonesiapeduli@gmail.com
+> Password : 123456
+
+Member
+> Username : memberpeduli@gmail.com
+> Password : 123456
+
+## Screenshoot
+
 ![Indonesia Peduli - Home](https://user-images.githubusercontent.com/57386598/159720380-cbba31b6-6bdf-4f17-81d0-8351a9117782.png)
 ![Indonesia Peduli - Detail Program](https://user-images.githubusercontent.com/57386598/159720430-afb66b5d-80b7-4c8c-83fd-9e701030f948.png)
 ![Indonesia Peduli - Pembayaran](https://user-images.githubusercontent.com/57386598/159720424-fcb1808d-e483-4fb8-a12b-5ec4d6710ff0.png)
